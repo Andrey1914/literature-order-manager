@@ -1,5 +1,5 @@
 import { signIn } from "@/lib/auth";
-import { GoogleIcon } from "./icons";
+import { GoogleIcon } from "./icons/GoogleIcon";
 
 export const GoogleSignInButton = () => {
   return (

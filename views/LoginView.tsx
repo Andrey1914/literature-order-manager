@@ -1,4 +1,4 @@
-import { GoogleSignInButton } from "@/components/ui";
+import { GoogleSignInButton } from "@/components/ui/GoogleSignInButton";
 
 export const LoginView = () => {
   return (
