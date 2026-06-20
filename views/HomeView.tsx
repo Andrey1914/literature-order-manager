@@ -1,6 +1,8 @@
+"use client";
+
 import { Session } from "next-auth";
-import { ButtonLink, UserProfile } from "@/components/ui";
-import { SignOutForm } from "@/components/forms";
+import { ButtonLink } from "@/components/ui/ButtonLink";
+import { SignOutForm } from "@/components/forms/SignOutForm";
 
 interface HomeViewProps {
   session: Session | null;
@@ -22,11 +24,9 @@ export const HomeView = ({ session }: HomeViewProps) => {
         <div className="pt-4">
           {user ? (
             <div className="space-y-4">
-              <UserProfile
-                image={user.image}
-                name={user.name}
-                role={user.role || "user"}
-              />
+              <p className="text-xl font-semibold text-gray-800">
+                Добро пожаловать, {user.name}!
+              </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
                 <ButtonLink href="/dashboard" variant="primary">
