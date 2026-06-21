@@ -1,8 +1,6 @@
-interface UsersIconProps {
-  className?: string;
-}
+import { IconProps } from "./types";
 
-export const UsersIcon = ({ className = "h-5 w-5" }: UsersIconProps) => {
+export const UsersIcon = ({ className = "h-5 w-5" }: IconProps) => {
   return (
     <svg
       className={className}

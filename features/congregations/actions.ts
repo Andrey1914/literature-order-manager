@@ -74,7 +74,7 @@ export async function deleteCongregationAction(id: string) {
     userId: session.user.id,
   });
 
-  await db.collection("customers").deleteMany({ congregationId: id });
+  await db.collection("publishers").deleteMany({ congregationId: id });
   await db.collection("orders").deleteMany({ congregationId: id });
 
   return { id };
