@@ -7,6 +7,9 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: MongoDBAdapter(clientPromise, {
     databaseName: "literature-order-manager",
   }),
+  session: {
+    strategy: "database",
+  },
   providers: [
     Google({
       clientId: process.env.AUTH_GOOGLE_ID,
