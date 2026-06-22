@@ -4,11 +4,7 @@ import { useState } from "react";
 import { usePublisherStore } from "../store";
 import { createPublisher } from "../actions";
 import { Button } from "@/components/ui/Button";
-
-interface CreatePublisherFormProps {
-  congregationId: string;
-  onSuccess: () => void;
-}
+import { CreatePublisherFormProps } from "./types";
 
 export const CreatePublisherForm = ({
   congregationId,

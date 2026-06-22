@@ -1,5 +1,10 @@
-import { Congregation } from "@/features/congregations/types";
+import { Session } from "next-auth";
+import { Congregation } from "@/types";
 
 export interface DashboardViewProps {
   initialCongregations: Congregation[];
+}
+
+export interface HomeViewProps {
+  session: Session | null;
 }

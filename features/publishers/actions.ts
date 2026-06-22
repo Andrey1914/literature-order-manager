@@ -3,6 +3,7 @@
 import clientPromise from "@/lib/db";
 import { ObjectId } from "mongodb";
 import { revalidatePath } from "next/cache";
+import { auth } from "@/lib/auth";
 
 export async function createPublisher(data: {
   name: string;
@@ -93,5 +94,35 @@ export async function deletePublisher(id: string) {
   } catch (error) {
     console.error("Failed to delete publisher and their orders:", error);
     return { error: "Не удалось полностью удалить возвещателя и его заказы" };
+  }
+}
+
+export async function getPublishersByCongregation(congregationId: string) {
+  try {
+    const session = await auth();
+    if (!session?.user?.id) {
+      return { error: "Unauthorized" };
+    }
+
+    const client = await clientPromise;
+    const db = client.db("literature-order-manager");
+
+    const data = await db
+      .collection("publishers")
+      .find({ congregationId: new ObjectId(congregationId) })
+      .sort({ name: 1 })
+      .toArray();
+
+    const publishers = data.map((doc) => ({
+      id: doc._id.toString(),
+      name: doc.name,
+      lastName: doc.lastName || null,
+      congregationId: doc.congregationId.toString(),
+    }));
+
+    return { success: true, data: publishers };
+  } catch (error) {
+    console.error("Failed to fetch publishers:", error);
+    return { error: "Не удалось загрузить возвещателей" };
   }
 }

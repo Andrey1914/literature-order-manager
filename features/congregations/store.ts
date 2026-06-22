@@ -1,15 +1,5 @@
 import { create } from "zustand";
-import { Congregation } from "./types";
-
-interface CongregationState {
-  congregations: Congregation[];
-  activeCongregationId: string | null;
-  setCongregations: (congregations: Congregation[]) => void;
-  setActiveCongregation: (id: string | null) => void;
-  addCongregation: (congregation: Congregation) => void;
-  updateCongregation: (congregation: Congregation) => void;
-  deleteCongregation: (id: string) => void;
-}
+import { CongregationState } from "./types";
 
 export const useCongregationStore = create<CongregationState>((set) => ({
   congregations: [],

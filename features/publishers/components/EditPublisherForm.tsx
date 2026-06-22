@@ -1,14 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { usePublisherStore, Publisher } from "../store";
+import { usePublisherStore } from "../store";
 import { updatePublisher } from "../actions";
 import { Button } from "@/components/ui/Button";
-
-interface EditPublisherFormProps {
-  publisher: Publisher;
-  onSuccess: () => void;
-}
+import { EditPublisherFormProps } from "./types";
 
 export const EditPublisherForm = ({
   publisher,

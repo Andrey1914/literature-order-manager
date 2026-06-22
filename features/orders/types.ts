@@ -1,0 +1,169 @@
+import { ObjectId } from "mongodb";
+
+interface BaseOrderFields<TCategory, TStatus> {
+  category: TCategory;
+  title: string;
+  quantity: number;
+  status: TStatus;
+}
+
+interface BaseClientOrder<TCategory, TStatus> extends BaseOrderFields<
+  TCategory,
+  TStatus
+> {
+  id: string;
+  publisherId: string;
+  deliveryHistory?: string[];
+}
+
+interface BaseDbOrder<TCategory, TStatus> extends BaseOrderFields<
+  TCategory,
+  TStatus
+> {
+  _id: ObjectId;
+  publisherId: ObjectId;
+  deliveryHistory?: Date[];
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+interface BaseCreateArgs<TCategory> {
+  publisherId: string;
+  category: TCategory;
+  title: string;
+  quantity: number;
+}
+
+export type SpecialCategory = "BOOK" | "BROCHURE" | "CD" | "ANNUAL_EDITION";
+export type SpecialStatus = "ORDERED" | "EXPECTED" | "DELIVERED";
+
+export type RegularCategory = "MAGAZINE" | "WORKBOOK";
+export type RegularStatus = "ORDERED" | "EXPECTED";
+
+export type OrderStatus = "ORDERED" | "EXPECTED";
+
+export type SpecialOrder = BaseClientOrder<SpecialCategory, SpecialStatus>;
+
+export interface RegularSubscription extends BaseClientOrder<
+  RegularCategory,
+  RegularStatus
+> {
+  isActive: boolean;
+}
+
+export type DbSpecialOrder = BaseDbOrder<SpecialCategory, SpecialStatus>;
+
+export interface DbRegularSubscription extends BaseDbOrder<
+  RegularCategory,
+  RegularStatus
+> {
+  isActive: boolean;
+}
+
+export type DbOrderItem = BaseOrderFields<string, OrderStatus>;
+
+export type CreateSpecialOrderArgs = BaseCreateArgs<SpecialCategory>;
+export type CreateRegularSubscriptionArgs = BaseCreateArgs<RegularCategory>;
+
+export interface OrderState {
+  specialOrders: SpecialOrder[];
+  regularSubscriptions: RegularSubscription[];
+  isLoading: boolean;
+
+  setSpecialOrders: (orders: SpecialOrder[]) => void;
+  setRegularSubscriptions: (subs: RegularSubscription[]) => void;
+  addSpecialOrder: (order: SpecialOrder) => void;
+  addRegularSubscription: (sub: RegularSubscription) => void;
+  updateStatusInState: (
+    id: string,
+    isRegular: boolean,
+    nextStatus: string,
+  ) => void;
+  setIsLoading: (isLoading: boolean) => void;
+}
+
+// import { ObjectId } from "mongodb";
+
+// export interface SpecialOrder {
+//   id: string;
+//   publisherId: string;
+//   category: "BOOK" | "BROCHURE" | "CD" | "ANNUAL_EDITION";
+//   title: string;
+//   quantity: number;
+//   status: "ORDERED" | "EXPECTED" | "DELIVERED";
+//   deliveryHistory?: string[];
+// }
+
+// export interface RegularSubscription {
+//   id: string;
+//   publisherId: string;
+//   category: "MAGAZINE" | "WORKBOOK";
+//   title: string;
+//   quantity: number;
+//   status: "ORDERED" | "EXPECTED";
+//   isActive: boolean;
+//   deliveryHistory?: string[];
+// }
+
+// export interface OrderState {
+//   specialOrders: SpecialOrder[];
+//   regularSubscriptions: RegularSubscription[];
+//   isLoading: boolean;
+
+//   setSpecialOrders: (orders: SpecialOrder[]) => void;
+//   setRegularSubscriptions: (subs: RegularSubscription[]) => void;
+//   addSpecialOrder: (order: SpecialOrder) => void;
+//   addRegularSubscription: (sub: RegularSubscription) => void;
+//   updateStatusInState: (
+//     id: string,
+//     isRegular: boolean,
+//     nextStatus: string,
+//   ) => void;
+//   setIsLoading: (isLoading: boolean) => void;
+// }
+
+// export interface DbRegularSubscription {
+//   _id: ObjectId;
+//   publisherId: ObjectId;
+//   category: "MAGAZINE" | "WORKBOOK";
+//   title: string;
+//   quantity: number;
+//   status: "ORDERED" | "EXPECTED";
+//   isActive: boolean;
+//   deliveryHistory?: Date[];
+//   createdAt: Date;
+//   updatedAt: Date;
+// }
+
+// export interface DbSpecialOrder {
+//   _id: ObjectId;
+//   publisherId: ObjectId;
+//   category: "BOOK" | "BROCHURE" | "CD" | "ANNUAL_EDITION";
+//   title: string;
+//   quantity: number;
+//   status: "ORDERED" | "EXPECTED" | "DELIVERED";
+//   deliveryHistory?: Date[];
+//   createdAt: Date;
+//   updatedAt: Date;
+// }
+
+// export interface CreateSpecialOrderArgs {
+//   publisherId: string;
+//   category: "BOOK" | "BROCHURE" | "CD" | "ANNUAL_EDITION";
+//   title: string;
+//   quantity: number;
+// }
+
+// export interface CreateRegularSubscriptionArgs {
+//   publisherId: string;
+//   category: "MAGAZINE" | "WORKBOOK";
+//   title: string;
+//   quantity: number;
+// }
+
+// export interface DbOrderItem {
+//   title: string;
+//   category: string;
+//   status: "ORDERED" | "EXPECTED";
+//   quantity: number;
+// }

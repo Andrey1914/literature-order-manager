@@ -1,19 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { Congregation } from "../types";
+import { CongregationCardProps } from "./types";
 import { Modal } from "@/components/ui/Modal";
 import { ConfirmModal } from "@/components/ui/ConfirmModal";
 import { CardActions } from "@/components/ui/CardActions";
 import { EditCongregationForm } from "./EditCongregationForm";
 import { useCongregationStore } from "../store";
 import { deleteCongregationAction } from "../actions";
-
-interface CongregationCardProps {
-  item: Congregation;
-  isActive: boolean;
-  onSelect: (id: string) => void;
-}
 
 export const CongregationCard = ({
   item,
