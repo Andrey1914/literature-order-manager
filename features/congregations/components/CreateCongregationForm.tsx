@@ -4,10 +4,7 @@ import { useState } from "react";
 import { useCongregationStore } from "../store";
 import { createCongregationAction } from "../actions";
 import { Button } from "@/components/ui/Button";
-
-interface CreateCongregationFormProps {
-  onSuccess: () => void;
-}
+import { CreateCongregationFormProps } from "./types";
 
 export const CreateCongregationForm = ({
   onSuccess,

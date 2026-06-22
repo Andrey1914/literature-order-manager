@@ -1,15 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { Congregation } from "../types";
+import { EditCongregationFormProps } from "./types";
 import { Button } from "@/components/ui/Button";
 import { useCongregationStore } from "../store";
 import { updateCongregationAction } from "../actions";
-
-interface EditCongregationFormProps {
-  item: Congregation;
-  onSuccess: () => void;
-}
 
 export const EditCongregationForm = ({
   item,

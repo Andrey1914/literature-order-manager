@@ -1,16 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { usePublisherStore, Publisher } from "../store";
+import { usePublisherStore } from "../store";
 import { deletePublisher } from "../actions";
 import { CardActions } from "@/components/ui/CardActions";
 import { Modal } from "@/components/ui/Modal";
 import { ConfirmModal } from "@/components/ui/ConfirmModal";
 import { EditPublisherForm } from "./EditPublisherForm";
-
-interface PublisherCardProps {
-  publisher: Publisher;
-}
+import { PublisherCardProps } from "./types";
 
 export const PublisherCard = ({ publisher }: PublisherCardProps) => {
   const setActivePublisher = usePublisherStore(

@@ -1,12 +1,8 @@
 "use client";
 
-import { Session } from "next-auth";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { SignOutForm } from "@/components/forms/SignOutForm";
-
-interface HomeViewProps {
-  session: Session | null;
-}
+import { HomeViewProps } from "./types";
 
 export const HomeView = ({ session }: HomeViewProps) => {
   const user = session?.user;

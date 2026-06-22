@@ -8,6 +8,9 @@ import { useCongregationStore } from "@/features/congregations/store";
 import { usePublisherStore } from "@/features/publishers/store";
 import { CreatePublisherForm } from "@/features/publishers/components/CreatePublisherForm";
 import { PublisherList } from "@/features/publishers/components/PublisherList";
+import { CongregationInfoCard } from "@/features/congregations/components/CongregationInfoCard";
+import { getPublishersByCongregation } from "@/features/publishers/actions";
+import { CongregationWarehouse } from "@/features/congregations/components/CongregationWarehouse";
 
 export const CongregationDetailsScreen = () => {
   const { activeCongregationId, setActiveCongregation, congregations } =
@@ -25,12 +28,12 @@ export const CongregationDetailsScreen = () => {
     const fetchPublishers = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch(
-          `/api/publishers?congregationId=${activeCongregationId}`,
-        );
-        if (response.ok) {
-          const data = await response.json();
-          setPublishers(data);
+        const result = await getPublishersByCongregation(activeCongregationId);
+
+        if (result.success && result.data) {
+          setPublishers(result.data);
+        } else if (result.error) {
+          console.error(result.error);
         }
       } catch (error) {
         console.error("Error loading publishers:", error);
@@ -43,6 +46,8 @@ export const CongregationDetailsScreen = () => {
   }, [activeCongregationId, setPublishers, setIsLoading]);
 
   if (!activeCongregation) return null;
+
+  const { name, country } = activeCongregation;
 
   return (
     <div className="space-y-8">
@@ -58,7 +63,7 @@ export const CongregationDetailsScreen = () => {
 
       <div className="border-b border-gray-200 pb-6">
         <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-          Собрание: &ldquo;{activeCongregation.name}&rdquo;
+          Собрание: &ldquo;{name}&rdquo;
         </h1>
         <p className="mt-2 text-lg text-gray-600">
           Управление возвещателями собрания и их заказами литературы.
@@ -77,30 +82,19 @@ export const CongregationDetailsScreen = () => {
           <PublisherList />
         </div>
 
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 h-fit space-y-4">
-          <h3 className="text-lg font-bold text-gray-800 border-b pb-2">
-            Информация
-          </h3>
-          <div className="text-sm text-gray-600 space-y-2">
-            <p>
-              <strong>Название:</strong> {activeCongregation.name}
-            </p>
-            {activeCongregation.country && (
-              <p>
-                <strong>Страна:</strong> 🌍 {activeCongregation.country}
-              </p>
-            )}
-          </div>
+        <div className="space-y-6">
+          <CongregationInfoCard name={name} country={country} />
+          <CongregationWarehouse congregationId={activeCongregation.id} />
         </div>
       </div>
 
       <Modal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        title={`Добавить возвещателя в "${activeCongregation.name}"`}
+        title={`Добавить возвещателя в "${name}"`}
       >
         <CreatePublisherForm
-          congregationId={activeCongregationId!}
+          congregationId={activeCongregation.id}
           onSuccess={() => setIsModalOpen(false)}
         />
       </Modal>
