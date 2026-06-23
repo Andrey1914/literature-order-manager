@@ -2,15 +2,28 @@
 
 import { useState } from "react";
 import { useOrderStore } from "../store";
-import { updateOrderStatus } from "../actions";
+import {
+  updateOrderStatus,
+  deleteOrder,
+  updateOrderDetails,
+} from "@/features/orders/actions";
 import { CATEGORY_LABELS, STATUS_CONFIG, formatDate } from "../utils";
-import { OrderCardProps, RegularSubscription } from "./types";
+import { OrderCardProps } from "./types";
+
+import { ConfirmModal } from "@/components/ui/ConfirmModal";
+import { EditOrderModal } from "./EditOrderModal";
+import { CardActions } from "@/components/ui/CardActions";
 
 export const OrderCard = ({ order, isRegular }: OrderCardProps) => {
-  const updateStatusInState = useOrderStore(
-    (state) => state.updateStatusInState,
-  );
+  const { deleteOrderInState, updateOrderInState, updateStatusInState } =
+    useOrderStore();
   const [isPending, setIsPending] = useState(false);
+
+  const [isEditOpen, setIsEditOpen] = useState(false);
+  const [isDeleteOpen, setIsDeleteOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const isDelivered = order.status === "DELIVERED";
 
   const currentStatus = order.status;
   const config = STATUS_CONFIG[currentStatus];
@@ -19,14 +32,10 @@ export const OrderCard = ({ order, isRegular }: OrderCardProps) => {
     className: "bg-gray-50 text-gray-600",
   };
 
-  const regularOrder = isRegular ? (order as RegularSubscription) : null;
-  const hasHistory =
-    (isRegular ? regularOrder?.deliveryHistory : order.deliveryHistory) &&
-    (isRegular ? regularOrder?.deliveryHistory : order.deliveryHistory)!
-      .length > 0;
-  const historyDates = isRegular
-    ? regularOrder?.deliveryHistory
-    : order.deliveryHistory;
+  const historyDates = Array.isArray(order.deliveryHistory)
+    ? order.deliveryHistory
+    : [];
+  const hasHistory = historyDates.length > 0;
 
   const handleStatusChange = async () => {
     setIsPending(true);
@@ -49,8 +58,37 @@ export const OrderCard = ({ order, isRegular }: OrderCardProps) => {
     }
   };
 
+  const handleDeleteConfirm = async () => {
+    setIsSubmitting(true);
+    const res = await deleteOrder(order.id, isRegular);
+
+    if (res.success) {
+      deleteOrderInState(order.id, isRegular);
+      setIsDeleteOpen(false);
+    } else {
+      alert(res.error);
+    }
+    setIsSubmitting(false);
+  };
+
+  const handleSaveConfirm = async (newQuantity: number) => {
+    setIsSubmitting(true);
+    const res = await updateOrderDetails(order.id, isRegular, {
+      title: order.title,
+      quantity: newQuantity,
+    });
+
+    if (res.success) {
+      updateOrderInState(order.id, isRegular, order.title, newQuantity);
+      setIsEditOpen(false);
+    } else {
+      alert(res.error);
+    }
+    setIsSubmitting(false);
+  };
+
   return (
-    <div className="bg-white p-4 rounded-xl border border-gray-100 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:shadow-md transition-shadow">
+    <div className="bg-white p-4 rounded-xl border border-gray-100 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:shadow-md transition-shadow relative group">
       <div className="space-y-2">
         <div className="flex items-center gap-2 flex-wrap">
           <span
@@ -88,7 +126,7 @@ export const OrderCard = ({ order, isRegular }: OrderCardProps) => {
               {isRegular ? "Последние выдачи:" : "Выдано:"}
             </p>
             <div className="flex flex-wrap gap-1">
-              {historyDates?.map((dateStr, idx) => (
+              {historyDates.map((dateStr, idx) => (
                 <span
                   key={idx}
                   className="text-[11px] bg-emerald-50/60 border border-emerald-100/70 text-emerald-700 px-1.5 py-0.5 rounded-md font-medium"
@@ -101,7 +139,7 @@ export const OrderCard = ({ order, isRegular }: OrderCardProps) => {
         )}
       </div>
 
-      <div className="flex items-center justify-end">
+      <div className="flex flex-row items-center justify-end gap-2 w-full sm:w-auto shrink-0">
         {currentStatus !== "DELIVERED" && config.btnLabel && (
           <button
             type="button"
@@ -116,7 +154,34 @@ export const OrderCard = ({ order, isRegular }: OrderCardProps) => {
             {isPending ? "Обновление..." : config.btnLabel}
           </button>
         )}
+
+        {!isDelivered && (
+          <div className="sm:static sm:opacity-100 transition-opacity shrink-0 *:absolute *:sm:static *:top-auto *:right-auto *:inset-auto">
+            <CardActions
+              onEdit={() => setIsEditOpen(true)}
+              onDelete={() => setIsDeleteOpen(true)}
+            />
+          </div>
+        )}
       </div>
+
+      <ConfirmModal
+        isOpen={isDeleteOpen}
+        onClose={() => setIsDeleteOpen(false)}
+        onConfirm={handleDeleteConfirm}
+        title="Аннулировать заказ"
+        message={`Вы уверены, что хотите полностью удалить и аннулировать заказ на "${order.title}" (${order.quantity} шт.)? Это действие нельзя будет отменить.`}
+        isLoading={isSubmitting}
+      />
+
+      <EditOrderModal
+        key={`${order.id}-${isEditOpen}`}
+        isOpen={isEditOpen}
+        onClose={() => setIsEditOpen(false)}
+        onSave={handleSaveConfirm}
+        initialQuantity={order.quantity}
+        isLoading={isSubmitting}
+      />
     </div>
   );
 };
