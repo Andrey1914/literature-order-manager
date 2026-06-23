@@ -2,9 +2,9 @@
 
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { SignOutForm } from "@/components/forms/SignOutForm";
-import { HomeViewProps } from "./types";
+import { WithSessionProps } from "@/types";
 
-export const HomeView = ({ session }: HomeViewProps) => {
+export const HomeView = ({ session }: WithSessionProps) => {
   const user = session?.user;
 
   return (

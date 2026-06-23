@@ -72,11 +72,16 @@ export const CongregationDetailsScreen = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-6">
-          <div className="flex items-center justify-between bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
             <h3 className="text-xl font-bold text-gray-800">Возвещатели</h3>
-            <Button onClick={() => setIsModalOpen(true)}>
-              + Добавить возвещателя
-            </Button>
+            <div className="w-full sm:w-auto">
+              <Button
+                onClick={() => setIsModalOpen(true)}
+                className="w-full sm:w-auto"
+              >
+                + Добавить возвещателя
+              </Button>
+            </div>
           </div>
 
           <PublisherList />

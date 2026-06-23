@@ -1,8 +1,4 @@
-interface ActionButtonProps {
-  onClick?: () => void;
-  label: string;
-  icon?: React.ReactNode;
-}
+import { ActionButtonProps } from "./types";
 
 export const ActionButton = ({ onClick, label, icon }: ActionButtonProps) => {
   return (

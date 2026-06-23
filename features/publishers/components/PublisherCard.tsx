@@ -40,22 +40,26 @@ export const PublisherCard = ({ publisher }: PublisherCardProps) => {
     <>
       <div
         onClick={() => setActivePublisher(publisher.id)}
-        className="relative flex flex-col justify-center bg-white p-5 rounded-2xl shadow-sm border border-gray-100 hover:border-indigo-500/40 hover:shadow-md hover:shadow-indigo-500/5 transition-all cursor-pointer group"
+        className="group cursor-pointer rounded-2xl border p-6 shadow-sm transition-all hover:shadow-md bg-white hover:border-indigo-400/40"
       >
-        <CardActions
-          onEdit={() => setIsEditOpen(true)}
-          onDelete={() => setIsDeleteOpen(true)}
-        />
+        <div className="flex items-start justify-between gap-4 w-full">
+          <div className="min-w-0 flex-1">
+            <h4 className="font-bold text-gray-800 group-hover:text-indigo-700 transition-colors wrap-break-word">
+              {publisher.name}
+            </h4>
+            {publisher.lastName && (
+              <p className="font-bold text-gray-500 mt-1.5 flex items-center gap-1 wrap-break-word">
+                {publisher.lastName}
+              </p>
+            )}
+          </div>
 
-        <div className="pr-20">
-          <h4 className="font-bold text-gray-800 group-hover:text-indigo-700 transition-colors">
-            {publisher.name}
-          </h4>
-          {publisher.lastName && (
-            <p className="font-bold text-gray-500 mt-1.5 flex items-center gap-1">
-              {publisher.lastName}
-            </p>
-          )}
+          <div className="shrink-0">
+            <CardActions
+              onEdit={() => setIsEditOpen(true)}
+              onDelete={() => setIsDeleteOpen(true)}
+            />
+          </div>
         </div>
       </div>
 
@@ -79,5 +83,47 @@ export const PublisherCard = ({ publisher }: PublisherCardProps) => {
         message={`Вы уверены, что хотите удалить возвещателя ${publisher.name} ${publisher.lastName || ""}? Это действие необратимо удалит все связанные с ним заказы литературы.`}
       />
     </>
+    // <>
+    //   <div
+    //     onClick={() => setActivePublisher(publisher.id)}
+    //     className="relative flex flex-col justify-center bg-white p-5 rounded-2xl shadow-sm border border-gray-100 hover:border-indigo-500/40 hover:shadow-md hover:shadow-indigo-500/5 transition-all cursor-pointer group"
+    //   >
+    //     <CardActions
+    //       onEdit={() => setIsEditOpen(true)}
+    //       onDelete={() => setIsDeleteOpen(true)}
+    //     />
+
+    //     <div className="pr-20">
+    //       <h4 className="font-bold text-gray-800 group-hover:text-indigo-700 transition-colors">
+    //         {publisher.name}
+    //       </h4>
+    //       {publisher.lastName && (
+    //         <p className="font-bold text-gray-500 mt-1.5 flex items-center gap-1">
+    //           {publisher.lastName}
+    //         </p>
+    //       )}
+    //     </div>
+    //   </div>
+
+    //   <Modal
+    //     isOpen={isEditOpen}
+    //     onClose={() => setIsEditOpen(false)}
+    //     title="Редактировать возвещателя"
+    //   >
+    //     <EditPublisherForm
+    //       publisher={publisher}
+    //       onSuccess={() => setIsEditOpen(false)}
+    //     />
+    //   </Modal>
+
+    //   <ConfirmModal
+    //     isOpen={isDeleteOpen}
+    //     onClose={() => setIsDeleteOpen(false)}
+    //     onConfirm={confirmDelete}
+    //     isLoading={isDeletePending}
+    //     title="Удалить возвещателя"
+    //     message={`Вы уверены, что хотите удалить возвещателя ${publisher.name} ${publisher.lastName || ""}? Это действие необратимо удалит все связанные с ним заказы литературы.`}
+    //   />
+    // </>
   );
 };

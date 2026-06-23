@@ -1,1 +1,6 @@
-export type { Congregation, BaseFormProps, Publisher } from "./types";
+export type {
+  WithSessionProps,
+  Congregation,
+  BaseFormProps,
+  Publisher,
+} from "./types";

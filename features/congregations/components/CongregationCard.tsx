@@ -38,25 +38,32 @@ export const CongregationCard = ({
   return (
     <div
       onClick={() => onSelect(item.id)}
-      className={`group relative cursor-pointer rounded-2xl border p-6 shadow-sm transition-all hover:shadow-md bg-white ${
+      className={`group cursor-pointer rounded-2xl border p-6 shadow-sm transition-all hover:shadow-md bg-white hover:border-indigo-400/40 ${
         isActive
           ? "border-indigo-600 ring-2 ring-indigo-100"
           : "border-gray-100"
       }`}
     >
-      <CardActions
-        onEdit={() => setIsEditOpen(true)}
-        onDelete={() => setIsDeleteOpen(true)}
-      />
+      <div className="flex items-start justify-between gap-4 w-full">
+        <div className="min-w-0 flex-1">
+          <h4 className="text-xl font-bold text-gray-900 wrap-break-word">
+            {item.name}
+          </h4>
 
-      <h4 className="text-xl font-bold text-gray-900 pr-20 wrap-break-word">
-        {item.name}
-      </h4>
-      {item.country && (
-        <p className="mt-1 text-sm font-medium text-gray-500">
-          🌍 {item.country}
-        </p>
-      )}
+          {item.country && (
+            <p className="mt-1 text-sm font-medium text-gray-500">
+              🌍 {item.country}
+            </p>
+          )}
+        </div>
+
+        <div className="shrink-0">
+          <CardActions
+            onEdit={() => setIsEditOpen(true)}
+            onDelete={() => setIsDeleteOpen(true)}
+          />
+        </div>
+      </div>
 
       <ConfirmModal
         isOpen={isDeleteOpen}

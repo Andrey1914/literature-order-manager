@@ -88,7 +88,7 @@ export const OrderCard = ({ order, isRegular }: OrderCardProps) => {
   };
 
   return (
-    <div className="bg-white p-4 rounded-xl border border-gray-100 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:shadow-md transition-shadow relative group">
+    <div className="bg-white p-4 rounded-xl border border-gray-100 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:shadow-md transition-shadow relative group hover:border-indigo-400/40">
       <div className="space-y-2">
         <div className="flex items-center gap-2 flex-wrap">
           <span
@@ -139,13 +139,13 @@ export const OrderCard = ({ order, isRegular }: OrderCardProps) => {
         )}
       </div>
 
-      <div className="flex flex-row items-center justify-end gap-2 w-full sm:w-auto shrink-0">
+      <div className="flex flex-row flex-wrap items-stretch justify-end gap-2 w-full sm:w-auto shrink-0">
         {currentStatus !== "DELIVERED" && config.btnLabel && (
           <button
             type="button"
             disabled={isPending}
             onClick={handleStatusChange}
-            className={`w-full sm:w-auto px-4 py-2 text-xs font-semibold rounded-xl border transition-all shadow-sm ${
+            className={`flex-1 sm:flex-initial flex items-center justify-center px-4 py-2 text-xs font-semibold rounded-xl border transition-all shadow-sm ${
               currentStatus === "ORDERED"
                 ? "bg-white border-gray-200 text-gray-700 hover:bg-gray-50 active:bg-gray-100"
                 : "bg-indigo-600 border-transparent text-white hover:bg-indigo-700 active:bg-indigo-800 shadow-indigo-500/10"
@@ -156,7 +156,7 @@ export const OrderCard = ({ order, isRegular }: OrderCardProps) => {
         )}
 
         {!isDelivered && (
-          <div className="sm:static sm:opacity-100 transition-opacity shrink-0 *:absolute *:sm:static *:top-auto *:right-auto *:inset-auto">
+          <div className="flex shrink-0">
             <CardActions
               onEdit={() => setIsEditOpen(true)}
               onDelete={() => setIsDeleteOpen(true)}
