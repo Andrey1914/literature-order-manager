@@ -3,20 +3,18 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Session } from "next-auth";
 import { SignOutForm } from "@/components/forms/SignOutForm";
 import { UserRole } from "@/types/next-auth";
+import { WithSessionProps } from "@/types";
+import { MenuIcon } from "./icons/MenuIcon";
+import { CloseIcon } from "./icons/CloseIcon";
 
 const roleLabels: Record<UserRole, string> = {
   user: "Ответственный за литературу",
   superadmin: "Администратор",
 };
 
-interface HeaderProps {
-  session: Session | null;
-}
-
-export const Header = ({ session }: HeaderProps) => {
+export const Header = ({ session }: WithSessionProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const user = session?.user;
 
@@ -25,7 +23,7 @@ export const Header = ({ session }: HeaderProps) => {
   const currentRole = (user.role || "user") as UserRole;
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-gray-100 bg-white/80 backdrop-blur-md">
+    <header className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white backdrop-blur-md">
       <div className="mx-auto flex max-w-7xl items-center justify-between p-4 md:px-8">
         <Link
           href="/"
@@ -76,35 +74,7 @@ export const Header = ({ session }: HeaderProps) => {
           className="flex h-10 w-10 items-center justify-center rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 md:hidden focus:outline-none"
           aria-label="Переключить меню"
         >
-          {isOpen ? (
-            <svg
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          ) : (
-            <svg
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-          )}
+          {isOpen ? <CloseIcon /> : <MenuIcon />}
         </button>
       </div>
 
@@ -118,6 +88,7 @@ export const Header = ({ session }: HeaderProps) => {
                     src={user.image}
                     alt={user.name || "Аватар"}
                     fill
+                    sizes="9"
                     className="object-cover"
                   />
                 </div>
@@ -132,7 +103,7 @@ export const Header = ({ session }: HeaderProps) => {
               </div>
             </div>
 
-            <nav className="flex flex-col gap-2">
+            {/* <nav className="flex flex-col gap-2">
               <Link
                 href="/dashboard"
                 onClick={() => setIsOpen(false)}
@@ -140,7 +111,7 @@ export const Header = ({ session }: HeaderProps) => {
               >
                 Панель управления
               </Link>
-            </nav>
+            </nav> */}
 
             <div className="pt-2">
               <SignOutForm />

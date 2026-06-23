@@ -1,10 +1,5 @@
 import Link from "next/link";
-
-interface ButtonLinkProps {
-  href: string;
-  children: React.ReactNode;
-  variant?: "primary" | "secondary";
-}
+import { ButtonLinkProps } from "./types";
 
 export const ButtonLink = ({
   href,

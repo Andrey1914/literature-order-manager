@@ -1,3 +1,9 @@
+import { Session } from "next-auth";
+
+export interface WithSessionProps {
+  session: Session | null;
+}
+
 export interface Congregation {
   id: string;
   name: string;
