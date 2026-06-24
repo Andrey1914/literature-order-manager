@@ -1,0 +1,92 @@
+"use client";
+
+import { useLocale } from "next-intl";
+import { useState, useRef, useEffect } from "react";
+import {
+  locales,
+  localeNames,
+  Locale,
+  usePathname,
+  useRouter,
+} from "@/i18n/config";
+import {
+  UkraineFlagIcon,
+  RussiaFlagIcon,
+  MacedoniaFlagIcon,
+  UkFlagIcon,
+} from "@/components/ui/icons/FlagIcon";
+import { LanguageIcon } from "@/components/ui/icons/LanguageIcon";
+
+const flagIcons: Record<Locale, React.ComponentType<{ className?: string }>> = {
+  ru: RussiaFlagIcon,
+  en: UkFlagIcon,
+  uk: UkraineFlagIcon,
+  mk: MacedoniaFlagIcon,
+};
+
+export const LanguageSwitcher = () => {
+  const currentLocale = useLocale() as Locale;
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const [isOpen, setIsOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const handleLanguageChange = (nextLocale: Locale) => {
+    router.replace(pathname, { locale: nextLocale });
+    setIsOpen(false);
+  };
+
+  return (
+    <div className="relative inline-block text-left" ref={containerRef}>
+      <button
+        type="button"
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full pl-3 pr-8 py-1.5 text-xs font-medium bg-white border border-gray-200 rounded-lg shadow-sm focus:outline-none cursor-pointer text-gray-700 flex items-center gap-2"
+      >
+        <LanguageIcon />
+        <span>{localeNames[currentLocale].name}</span>
+
+        <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none text-gray-400 text-[10px]">
+          ▼
+        </span>
+      </button>
+
+      {isOpen && (
+        <div className="absolute right-0 mt-1 w-full min-w-35 bg-white border border-gray-200 rounded-lg shadow-lg z-50 py-1">
+          {locales.map((loc) => {
+            const Flag = flagIcons[loc];
+            return (
+              <button
+                key={loc}
+                type="button"
+                onClick={() => handleLanguageChange(loc)}
+                className={`w-full flex items-center gap-2 px-3 py-1.5 text-xs text-left transition-colors ${
+                  currentLocale === loc
+                    ? "bg-indigo-50 text-indigo-700 font-semibold"
+                    : "text-gray-700 hover:bg-gray-50"
+                }`}
+              >
+                <Flag className="w-4 h-3 object-cover rounded-sm shrink-0" />
+                <span>{localeNames[loc].name}</span>
+              </button>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+};

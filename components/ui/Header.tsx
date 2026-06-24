@@ -8,6 +8,7 @@ import { UserRole } from "@/types/next-auth";
 import { WithSessionProps } from "@/types";
 import { MenuIcon } from "./icons/MenuIcon";
 import { CloseIcon } from "./icons/CloseIcon";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 
 const roleLabels: Record<UserRole, string> = {
   user: "Ответственный за литературу",
@@ -33,14 +34,15 @@ export const Header = ({ session }: WithSessionProps) => {
         </Link>
 
         <div className="hidden items-center gap-6 md:flex">
-          <nav className="flex items-center gap-4 text-sm font-medium text-gray-600">
+          <LanguageSwitcher />
+          {/* <nav className="flex items-center gap-4 text-sm font-medium text-gray-600">
             <Link
               href="/dashboard"
               className="hover:text-indigo-600 transition-colors"
             >
               Панель управления
             </Link>
-          </nav>
+          </nav> */}
 
           <div className="h-6 w-px bg-gray-200" />
 
@@ -113,7 +115,8 @@ export const Header = ({ session }: WithSessionProps) => {
               </Link>
             </nav> */}
 
-            <div className="pt-2">
+            <div className="flex flex-col pt-2 gap-5">
+              <LanguageSwitcher />
               <SignOutForm />
             </div>
           </div>

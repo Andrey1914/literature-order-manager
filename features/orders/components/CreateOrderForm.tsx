@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { useOrderStore } from "../store";
@@ -11,6 +12,9 @@ export const CreateOrderForm = ({
   publisherId,
   onSuccess,
 }: CreateOrderFormProps) => {
+  const t = useTranslations("CreateOrderForm");
+  const tCategories = useTranslations("Categories");
+
   const { addSpecialOrder, addRegularSubscription } = useOrderStore();
 
   const [category, setCategory] = useState("BOOK");
@@ -79,7 +83,7 @@ export const CreateOrderForm = ({
     <form onSubmit={handleSubmit} className="space-y-5 pt-2">
       <div className="space-y-2">
         <label className="text-sm font-semibold text-gray-700">
-          Категория публикации
+          {t("categoryLabel")}
         </label>
         <div className="grid grid-cols-2 gap-2">
           {CATEGORIES.map((cat) => (
@@ -93,11 +97,9 @@ export const CreateOrderForm = ({
                   : "border-gray-200 text-gray-600 hover:bg-gray-50"
               }`}
             >
-              {cat.label}
+              {tCategories(cat.value)}
               <span className="block text-[10px] text-gray-400 mt-0.5 font-normal">
-                {cat.type === "REGULAR"
-                  ? "Постоянная подписка"
-                  : "Разовый заказ"}
+                {t(`types.${cat.type}`)}
               </span>
             </button>
           ))}
@@ -106,7 +108,7 @@ export const CreateOrderForm = ({
 
       <div className="space-y-1.5">
         <label htmlFor="title" className="text-sm font-semibold text-gray-700">
-          Название публикации
+          {t("titleLabel")}
         </label>
         <input
           id="title"
@@ -114,11 +116,7 @@ export const CreateOrderForm = ({
           required
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          placeholder={
-            currentType === "REGULAR"
-              ? "Например: Сторожевая Башня (изучение)"
-              : "Например: Радуйтесь жизни сейчас!"
-          }
+          placeholder={t(`placeholders.${currentType}`)}
           className="w-full px-4 py-2.5 rounded-xl border border-gray-200 p-3 text-sm text-gray-900 placeholder:text-gray-500 focus:outline-none focus:border-indigo-500 transition-colors"
         />
       </div>
@@ -128,7 +126,7 @@ export const CreateOrderForm = ({
           htmlFor="quantity"
           className="text-sm font-semibold text-gray-700"
         >
-          Количество (шт.)
+          {t("quantityLabel")}
         </label>
         <input
           id="quantity"
@@ -143,7 +141,7 @@ export const CreateOrderForm = ({
 
       <div className="flex justify-end gap-3 pt-4 border-t border-gray-100">
         <Button type="submit" isLoading={isPending}>
-          Добавить в заказ
+          {t("submitButton")}
         </Button>
       </div>
     </form>

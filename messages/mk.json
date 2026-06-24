@@ -1,0 +1,115 @@
+{
+  "Common": {
+    "months": [
+      "јануари",
+      "февруари",
+      "март",
+      "април",
+      "мај",
+      "јуни",
+      "јули",
+      "август",
+      "септември",
+      "октомври",
+      "ноември",
+      "декември"
+    ],
+    "loading": "Вчитување...",
+    "cancel": "Откажи",
+    "save": "Зачувај",
+    "delete": "Избриши",
+    "updating": "Ажурирање..."
+  },
+  "Dashboard": {
+    "title": "Контролна табла",
+    "regularOrders": "Редовни нарачки",
+    "specialOrders": "Специјални нарачки"
+  },
+  "Categories": {
+    "BOOK": "Книга",
+    "BROCHURE": "Брошура",
+    "WORKBOOK": "Роботна тетрад",
+    "MAGAZINE": "Списание",
+    "CD": "ЦД Диск",
+    "ANNUAL_EDITION": "Годишно издание"
+  },
+  "OrderCard": {
+    "issued": "Издадено:",
+    "lastDeliveries": "Последни издавања:",
+    "quantity": "{count} пар.",
+    "monthly": "Месечно",
+    "quantityLabel": "Количина:",
+    "deleteModalTitle": "Откажи нарачка",
+    "deleteModalMessage": "Дали сте сигурни дека сакате целосно да ја избришете и откажете нарачката за \"{title}\" ({count} пар.)? Ова дејство не може да се поништи.",
+    "categories": {
+      "BOOK": "Книга",
+      "BROCHURE": "Брошура",
+      "WORKBOOK": "Роботна тетрад",
+      "MAGAZINE": "Списание",
+      "CD": "ЦД Диск",
+      "ANNUAL_EDITION": "Годишно издание"
+    },
+    "statuses": {
+      "ORDERED": "Нарачано",
+      "EXPECTED": "Се очекува",
+      "DELIVERED": "Пристигнато"
+    },
+    "actions": {
+      "EXPECT": "Очекувај",
+      "DELIVER": "Издади",
+      "DELIVERED": "Издадено"
+    }
+  },
+  "CreateOrderForm": {
+    "categoryLabel": "Категорија на публикација",
+    "titleLabel": "Наслов на публикација",
+    "quantityLabel": "Количина (пар.)",
+    "submitButton": "Додај во нарачка",
+    "types": {
+      "REGULAR": "Постојана претплата",
+      "SPECIAL": "Еднократна нарачка"
+    },
+    "placeholders": {
+      "REGULAR": "На пример: Стражарска кула (издание за проучување)",
+      "SPECIAL": "На пример: Секоjдневно истражување на Писмото"
+    }
+  },
+  "EditOrderModal": {
+    "title": "Промена на количина",
+    "quantityLabel": "Внесете ја новата количина (пар.)"
+  },
+  "CreatePublisherForm": {
+    "firstNameLabel": "Име",
+    "firstNamePlaceholder": "Јован",
+    "lastNameLabel": "Презиме",
+    "lastNamePlaceholder": "Јовановски",
+    "submitButton": "Создади објавител",
+    "loadingButton": "Создавање..."
+  },
+  "EditPublisherForm": {
+    "firstNameLabel": "Име",
+    "lastNameLabel": "Презиме",
+    "submitButton": "Зачувај ги измените",
+    "loadingButton": "Зачувување...",
+    "errors": {
+      "nameRequired": "Името е задолжително за пополнување",
+      "generalError": "Се појави грешка при ажурирањето"
+    }
+  },
+  "PublisherCard": {
+    "editModalTitle": "Уреди го објавител?",
+    "deleteModalTitle": "Избриши го објавител?",
+    "deleteConfirmMessage": "Дали сте сигурни дека сакате да го избришете објавителот {name} {lastName}? Оваа акција трајно ќе ги избрише сите нарачки на литература поврзани со него."
+  },
+  "PublisherList": {
+    "emptyState": "Во ова собрание сè уште нема ниту еден објавител."
+  },
+  "PublisherStatusCard": {
+    "title": "Статус",
+    "totalOrders": "Вкупно нарачки:",
+    "needsDelivery": "Чека за подигање:",
+    "yes": "Да",
+    "no": "Не",
+    "pcs": "пар."
+  }
+}

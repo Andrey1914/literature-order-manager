@@ -2,7 +2,11 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { auth } from "@/lib/auth";
 import { Header } from "@/components/ui/Header";
-import "./globals.css";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
+import { notFound } from "next/navigation";
+import { locales, Locale } from "@/i18n/config";
+import "../globals.css";
 
 const geistSans = Geist({
   subsets: ["latin"],
@@ -19,22 +23,38 @@ export const metadata: Metadata = {
   description: "Система учета и распределения печатных изданий",
 };
 
+interface RootLayoutProps {
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
+}
+
 export default async function RootLayout({
   children,
-}: {
-  children: React.ReactNode;
-}) {
-  const session = await auth();
+  params,
+}: RootLayoutProps) {
+  const { locale } = await params;
+
+  if (!locales.includes(locale as Locale)) {
+    notFound();
+  }
+
+  const [session, messages] = await Promise.all([auth(), getMessages()]);
 
   return (
     <html
-      lang="ru"
+      lang={locale}
       className={`${geistSans.variable} ${geistMono.variable} antialiased`}
     >
       <body className="flex min-h-screen flex-col bg-gray-50 text-gray-900">
-        <Header session={session} />
-        {children}
+        <NextIntlClientProvider messages={messages}>
+          <Header session={session} />
+          {children}
+        </NextIntlClientProvider>
       </body>
     </html>
   );
+}
+
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
 }

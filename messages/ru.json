@@ -1,0 +1,107 @@
+{
+  "Common": {
+    "months": [
+      "января",
+      "февраля",
+      "марта",
+      "апреля",
+      "мая",
+      "июня",
+      "июля",
+      "августа",
+      "сентября",
+      "октября",
+      "ноября",
+      "декабря"
+    ],
+    "loading": "Загрузка...",
+    "cancel": "Отмена",
+    "save": "Сохранить",
+    "delete": "Удалить",
+    "updating": "Обновление..."
+  },
+  "Dashboard": {
+    "title": "Панель управления",
+    "regularOrders": "Регулярные заказы",
+    "specialOrders": "Специальные заказы"
+  },
+  "Categories": {
+    "BOOK": "Книга",
+    "BROCHURE": "Брошюра",
+    "WORKBOOK": "Рабочая тетрадь",
+    "MAGAZINE": "Журнал",
+    "CD": "Диск",
+    "ANNUAL_EDITION": "Ежегодное издание"
+  },
+  "OrderCard": {
+    "issued": "Выдано:",
+    "lastDeliveries": "Последние выдачи:",
+    "quantity": "{count} шт.",
+    "monthly": "Ежемесячно",
+    "quantityLabel": "Количество:",
+    "deleteModalTitle": "Аннулировать заказ",
+    "deleteModalMessage": "Вы уверены, что хотите полностью удалить и аннулировать заказ на \"{title}\" ({count} шт.)? Это действие нельзя будет отменить.",
+    "statuses": {
+      "ORDERED": "Заказано",
+      "EXPECTED": "Ожидается",
+      "DELIVERED": "Поступило"
+    },
+    "actions": {
+      "EXPECT": "Ожидать",
+      "DELIVER": "Выдать",
+      "DELIVERED": "Выдано"
+    }
+  },
+  "CreateOrderForm": {
+    "categoryLabel": "Категория публикации",
+    "titleLabel": "Название публикации",
+    "quantityLabel": "Количество (шт.)",
+    "submitButton": "Добавить в заказ",
+    "types": {
+      "REGULAR": "Постоянная подписка",
+      "SPECIAL": "Разовый заказ"
+    },
+    "placeholders": {
+      "REGULAR": "Например: Сторожевая Башня (изучение)",
+      "SPECIAL": "Например: Радуйтесь жизни сейчас!"
+    }
+  },
+  "EditOrderModal": {
+    "title": "Изменение количества",
+    "quantityLabel": "Укажите новое количество шт."
+  },
+  "CreatePublisherForm": {
+    "firstNameLabel": "Имя",
+    "firstNamePlaceholder": "Иван",
+    "lastNameLabel": "Фамилия",
+    "lastNamePlaceholder": "Иванов",
+    "submitButton": "Создать возвещателя",
+    "loadingButton": "Создание..."
+  },
+  "EditPublisherForm": {
+    "firstNameLabel": "Имя",
+    "lastNameLabel": "Фамилия",
+    "submitButton": "Сохранить изменения",
+    "loadingButton": "Сохранение...",
+    "errors": {
+      "nameRequired": "Имя обязательно для заполнения",
+      "generalError": "Произошла ошибка при обновлении"
+    }
+  },
+  "PublisherCard": {
+    "editModalTitle": "Редактировать возвещателя?",
+    "deleteModalTitle": "Удалить возвещателя?",
+    "deleteConfirmMessage": "Вы уверены, что хотите удалить возвещателя {name} {lastName}? Это действие необратимо удалит все связанные с ним заказы литературы."
+  },
+  "PublisherList": {
+    "emptyState": "В этом собрании пока нет ни одного возвещателя."
+  },
+  "PublisherStatusCard": {
+    "title": "Статус",
+    "totalOrders": "Всего заказов:",
+    "needsDelivery": "Ожидает выдачи:",
+    "yes": "Да",
+    "no": "Нет",
+    "pcs": "шт."
+  }
+}

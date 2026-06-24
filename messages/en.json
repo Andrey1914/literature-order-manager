@@ -1,0 +1,107 @@
+{
+  "Common": {
+    "months": [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ],
+    "loading": "Loading...",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "updating": "Updating..."
+  },
+  "Dashboard": {
+    "title": "Dashboard",
+    "regularOrders": "Regular Orders",
+    "specialOrders": "Special Orders"
+  },
+  "Categories": {
+    "BOOK": "Book",
+    "BROCHURE": "Brochure",
+    "WORKBOOK": "Workbook",
+    "MAGAZINE": "Magazine",
+    "CD": "CD",
+    "ANNUAL_EDITION": "Annual Edition"
+  },
+  "OrderCard": {
+    "issued": "Issued:",
+    "lastDeliveries": "Last deliveries:",
+    "quantity": "{count} pcs.",
+    "monthly": "Monthly",
+    "quantityLabel": "Quantity:",
+    "deleteModalTitle": "Cancel order",
+    "deleteModalMessage": "Are you sure you want to completely delete and cancel the order for \"{title}\" ({count} pcs.)? This action cannot be undone.",
+    "statuses": {
+      "ORDERED": "Ordered",
+      "EXPECTED": "Expected",
+      "DELIVERED": "Delivered"
+    },
+    "actions": {
+      "EXPECT": "Await",
+      "DELIVER": "Deliver",
+      "DELIVERED": "Delivered"
+    }
+  },
+  "CreateOrderForm": {
+    "categoryLabel": "Publication Category",
+    "titleLabel": "Publication Title",
+    "quantityLabel": "Quantity (pcs.)",
+    "submitButton": "Add to Order",
+    "types": {
+      "REGULAR": "Regular Subscription",
+      "SPECIAL": "One-time Order"
+    },
+    "placeholders": {
+      "REGULAR": "Example: The Watchtower (Study Edition)",
+      "SPECIAL": "Example: Examing the Scriptures daily"
+    }
+  },
+  "EditOrderModal": {
+    "title": "Change Quantity",
+    "quantityLabel": "Specify new quantity (pcs.)"
+  },
+  "CreatePublisherForm": {
+    "firstNameLabel": "First Name",
+    "firstNamePlaceholder": "John",
+    "lastNameLabel": "Last Name",
+    "lastNamePlaceholder": "Doe",
+    "submitButton": "Create Publisher",
+    "loadingButton": "Creating..."
+  },
+  "EditPublisherForm": {
+    "firstNameLabel": "First Name",
+    "lastNameLabel": "Last Name",
+    "submitButton": "Save Changes",
+    "loadingButton": "Saving...",
+    "errors": {
+      "nameRequired": "First name is required",
+      "generalError": "An error occurred during update"
+    }
+  },
+  "PublisherCard": {
+    "editModalTitle": "Edit Publisher?",
+    "deleteModalTitle": "Delete Publisher?",
+    "deleteConfirmMessage": "Are you sure you want to delete publisher {name} {lastName}? This action will permanently delete all associated literature orders."
+  },
+  "PublisherList": {
+    "emptyState": "There are no publishers in this congregation yet."
+  },
+  "PublisherStatusCard": {
+    "title": "Status",
+    "totalOrders": "Total orders:",
+    "needsDelivery": "Pending delivery:",
+    "yes": "Yes",
+    "no": "No",
+    "pcs": "pcs."
+  }
+}

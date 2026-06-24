@@ -52,6 +52,7 @@ export const CongregationDetailsScreen = () => {
   return (
     <div className="space-y-8">
       <Button
+        title="К списку собраний"
         type="button"
         variant="secondary"
         onClick={() => setActiveCongregation(null)}
@@ -76,6 +77,7 @@ export const CongregationDetailsScreen = () => {
             <h3 className="text-xl font-bold text-gray-800">Возвещатели</h3>
             <div className="w-full sm:w-auto">
               <Button
+                title="Добавить возвещателя"
                 onClick={() => setIsModalOpen(true)}
                 className="w-full sm:w-auto"
               >

@@ -10,3 +10,11 @@ export interface OrderCardProps {
 export interface CreateOrderFormProps extends BaseFormProps {
   publisherId: string;
 }
+
+export interface EditOrderModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  onSave: (quantity: number) => Promise<void>;
+  initialQuantity: number;
+  isLoading?: boolean;
+}
