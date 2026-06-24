@@ -1,0 +1,107 @@
+{
+  "Common": {
+    "months": [
+      "січень",
+      "лютий",
+      "березень",
+      "квітень",
+      "травень",
+      "червень",
+      "липень",
+      "серпень",
+      "вересень",
+      "жовтень",
+      "листопад",
+      "грудень"
+    ],
+    "loading": "Завантаження...",
+    "cancel": "Скасувати",
+    "save": "Зберегти",
+    "delete": "Видалити",
+    "updating": "Оновлення..."
+  },
+  "Dashboard": {
+    "title": "Панель управління",
+    "regularOrders": "Регулярні замовлення",
+    "specialOrders": "Спеціальні замовлення"
+  },
+  "Categories": {
+    "BOOK": "Книга",
+    "BROCHURE": "Брошура",
+    "WORKBOOK": "Посібник для зібрання",
+    "MAGAZINE": "Журнал",
+    "CD": "Диск",
+    "ANNUAL_EDITION": "Щорічні видання"
+  },
+  "OrderCard": {
+    "issued": "Видано:",
+    "lastDeliveries": "Останні видачі:",
+    "quantity": "{count} шт.",
+    "monthly": "Щомісячно",
+    "quantityLabel": "Кількість:",
+    "deleteModalTitle": "Анулювати замовлення",
+    "deleteModalMessage": "Ви впевнені, що хочете повністю видалити та анулювати замовлення на \"{title}\" ({count} шт.)? Цю дію не можна буде скасувати.",
+    "statuses": {
+      "ORDERED": "Замовлено",
+      "EXPECTED": "Очікується",
+      "DELIVERED": "Надійшло"
+    },
+    "actions": {
+      "EXPECT": "Очікувати",
+      "DELIVER": "Видати",
+      "DELIVERED": "Видано"
+    }
+  },
+  "CreateOrderForm": {
+    "categoryLabel": "Категорія публікації",
+    "titleLabel": "Назва публікації",
+    "quantityLabel": "Кількість (шт.)",
+    "submitButton": "Додати до замовлення",
+    "types": {
+      "REGULAR": "Регулярне замовлення",
+      "SPECIAL": "Спеціальне замовлення"
+    },
+    "placeholders": {
+      "REGULAR": "Наприклад: Вартова Башта (видання для вивчення)",
+      "SPECIAL": "Наприклад: Щоденне досліджування Святого Письма"
+    }
+  },
+  "EditOrderModal": {
+    "title": "Зміна кількості",
+    "quantityLabel": "Вкажіть нову кількість шт."
+  },
+  "CreatePublisherForm": {
+    "firstNameLabel": "Ім'я",
+    "firstNamePlaceholder": "Іван",
+    "lastNameLabel": "Прізвище",
+    "lastNamePlaceholder": "Іванов",
+    "submitButton": "Створити вісника",
+    "loadingButton": "Створення..."
+  },
+  "EditPublisherForm": {
+    "firstNameLabel": "Ім'я",
+    "lastNameLabel": "Прізвище",
+    "submitButton": "Зберегти зміни",
+    "loadingButton": "Збереження...",
+    "errors": {
+      "nameRequired": "Ім'я обов'язкове для заповнення",
+      "generalError": "Сталася помилка при оновленні"
+    }
+  },
+  "PublisherCard": {
+    "editModalTitle": "Редагувати вісника?",
+    "deleteModalTitle": "Видалити вісника?",
+    "deleteConfirmMessage": "Ви впевнені, що хочете видалити вісника {name} {lastName}? Ця дія безповоротно видалить усі пов'язані з ним замовлення літератури."
+  },
+  "PublisherList": {
+    "emptyState": "У цьому зборі поки немає жодного вісника."
+  },
+  "PublisherStatusCard": {
+    "title": "Статус",
+    "totalOrders": "Всього замовлень:",
+    "needsDelivery": "Очікує видачі:",
+    "yes": "Так",
+    "no": "Ні",
+    "pcs": "шт."
+  }
+}

@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 import { UsersIcon } from "@/components/ui/icons/UsersIcon";
-import { ActionButton } from "@/components/ui/ActionButton";
 import { Modal } from "@/components/ui/Modal";
 import { CongregationList } from "@/features/congregations/components/CongregationList";
 import { CreateCongregationForm } from "@/features/congregations/components/CreateCongregationForm";
+import { Button } from "@/components/ui/Button";
 
 export const CongregationsScreen = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -26,11 +26,13 @@ export const CongregationsScreen = () => {
           Создайте собрание.
         </h3>
         <div className="flex flex-wrap gap-4">
-          <ActionButton
-            label="+ Собрание"
-            icon={<UsersIcon className="h-6 w-6" />}
+          <Button
+            title="Создайте собрание"
+            className="flex flex-wrap gap-4"
             onClick={() => setIsModalOpen(true)}
-          />
+          >
+            <UsersIcon className="h-6 w-6" />+ Собрание
+          </Button>
         </div>
       </section>
 

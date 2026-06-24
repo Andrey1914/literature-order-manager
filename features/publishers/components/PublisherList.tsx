@@ -1,9 +1,11 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { usePublisherStore } from "../store";
 import { PublisherCard } from "./PublisherCard";
 
 export const PublisherList = () => {
+  const t = useTranslations("PublisherList");
   const { publishers, isLoading } = usePublisherStore();
 
   if (isLoading) {
@@ -22,7 +24,7 @@ export const PublisherList = () => {
   if (publishers.length === 0) {
     return (
       <div className="bg-white p-12 rounded-2xl shadow-sm border border-gray-100 text-center text-gray-400 text-sm">
-        В этом собрании пока нет ни одного возвещателя.
+        {t("emptyState")}
       </div>
     );
   }

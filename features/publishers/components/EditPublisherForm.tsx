@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { usePublisherStore } from "../store";
 import { updatePublisher } from "../actions";
 import { Button } from "@/components/ui/Button";
@@ -10,6 +11,7 @@ export const EditPublisherForm = ({
   publisher,
   onSuccess,
 }: EditPublisherFormProps) => {
+  const t = useTranslations("EditPublisherForm");
   const updatePublisherState = usePublisherStore(
     (state) => state.updatePublisherState,
   );
@@ -21,7 +23,7 @@ export const EditPublisherForm = ({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name.trim()) {
-      setError("Имя обязательно для заполнения");
+      setError(t("errors.nameRequired"));
       return;
     }
 
@@ -46,7 +48,7 @@ export const EditPublisherForm = ({
       }
     } catch (err) {
       console.error(err);
-      setError("Произошла ошибка при обновлении");
+      setError(t("errors.generalError"));
     } finally {
       setIsPending(false);
     }
@@ -65,7 +67,7 @@ export const EditPublisherForm = ({
           htmlFor="edit-name"
           className="text-sm font-semibold text-gray-700"
         >
-          Имя возвещателя <span className="text-red-500">*</span>
+          {t("firstNameLabel")} <span className="text-red-500">*</span>
         </label>
         <input
           id="edit-name"
@@ -82,7 +84,7 @@ export const EditPublisherForm = ({
           htmlFor="edit-last-name"
           className="text-sm font-semibold text-gray-700"
         >
-          Фамилия
+          {t("lastNameLabel")}
         </label>
         <input
           id="edit-last-name"
@@ -95,7 +97,7 @@ export const EditPublisherForm = ({
 
       <div className="flex justify-end gap-3 pt-4 border-t border-gray-100">
         <Button type="submit" disabled={isPending} className="w-full sm:w-auto">
-          {isPending ? "Сохранение..." : "Сохранить изменения"}
+          {isPending ? t("loadingButton") : t("submitButton")}
         </Button>
       </div>
     </form>
