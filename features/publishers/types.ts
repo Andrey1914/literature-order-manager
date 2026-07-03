@@ -6,6 +6,7 @@ export interface PublisherState {
   activePublisherId: string | null;
   setPublishers: (publishers: Publisher[]) => void;
   addPublisher: (publisher: Publisher) => void;
+  refreshPublishers: (congregationId: string) => Promise<void>;
   updatePublisherState: (id: string, updatedFields: Partial<Publisher>) => void;
   removePublisher: (id: string) => void;
   setIsLoading: (isLoading: boolean) => void;

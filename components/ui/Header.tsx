@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { SignOutForm } from "@/components/forms/SignOutForm";
 import { UserRole } from "@/types/next-auth";
 import { WithSessionProps } from "@/types";
@@ -10,12 +11,10 @@ import { MenuIcon } from "./icons/MenuIcon";
 import { CloseIcon } from "./icons/CloseIcon";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 
-const roleLabels: Record<UserRole, string> = {
-  user: "Ответственный за литературу",
-  superadmin: "Администратор",
-};
-
 export const Header = ({ session }: WithSessionProps) => {
+  const tUser = useTranslations("User");
+  const tLogo = useTranslations("Logo");
+
   const [isOpen, setIsOpen] = useState(false);
   const user = session?.user;
 
@@ -30,7 +29,11 @@ export const Header = ({ session }: WithSessionProps) => {
           href="/"
           className="text-xl font-bold tracking-tight text-gray-900"
         >
-          Менеджер <span className="text-indigo-600">Литературы</span>
+          {tLogo.rich("logo", {
+            colored: (chunks) => (
+              <span className="text-indigo-600">{chunks}</span>
+            ),
+          })}
         </Link>
 
         <div className="hidden items-center gap-6 md:flex">
@@ -51,7 +54,7 @@ export const Header = ({ session }: WithSessionProps) => {
               <div className="relative h-9 w-9 overflow-hidden rounded-full border border-gray-200">
                 <Image
                   src={user.image}
-                  alt={user.name || "Аватар"}
+                  alt={user.name || tUser("avatar")}
                   fill
                   sizes="9"
                   className="object-cover"
@@ -63,7 +66,7 @@ export const Header = ({ session }: WithSessionProps) => {
                 {user.name}
               </p>
               <p className="text-xs text-gray-500 ">
-                {roleLabels[currentRole]}
+                {tUser(`roles.${currentRole}`)}
               </p>
             </div>
           </div>
@@ -88,7 +91,7 @@ export const Header = ({ session }: WithSessionProps) => {
                 <div className="relative h-11 w-11 overflow-hidden rounded-full border border-gray-200">
                   <Image
                     src={user.image}
-                    alt={user.name || "Аватар"}
+                    alt={user.name || tUser("avatar")}
                     fill
                     sizes="9"
                     className="object-cover"
@@ -100,7 +103,7 @@ export const Header = ({ session }: WithSessionProps) => {
                   {user.name}
                 </p>
                 <p className="text-xs text-gray-500 ">
-                  {roleLabels[currentRole]}
+                  {tUser(`roles.${currentRole}`)}
                 </p>
               </div>
             </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { useCongregationStore } from "../store";
 import { createCongregationAction } from "../actions";
 import { Button } from "@/components/ui/Button";
@@ -9,6 +10,10 @@ import { CreateCongregationFormProps } from "./types";
 export const CreateCongregationForm = ({
   onSuccess,
 }: CreateCongregationFormProps) => {
+  const t = useTranslations("CreateCongregationForm");
+  const tCommon = useTranslations("Common");
+  const tForm = useTranslations("CommonForm");
+
   const [name, setName] = useState("");
   const [country, setCountry] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -30,7 +35,7 @@ export const CreateCongregationForm = ({
       onSuccess();
     } catch (error) {
       console.error(error);
-      alert("Ошибка при создании собрания");
+      alert(t("errorAlert"));
     } finally {
       setIsLoading(false);
     }
@@ -40,38 +45,40 @@ export const CreateCongregationForm = ({
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
         <label className="block text-sm font-semibold text-gray-700 mb-1">
-          Название собрания <span className="text-red-500">*</span>
+          {tForm("nameLabel")} <span className="text-red-500">*</span>
         </label>
         <input
           type="text"
           required
           value={name}
           onChange={(e) => setName(e.target.value)}
-          placeholder="Пример: Центральное"
+          placeholder={t("namePlaceholder")}
           className="w-full rounded-xl border border-gray-300 p-3 text-sm text-gray-900 placeholder:text-gray-500 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
         />
       </div>
 
       <div>
         <label className="block text-sm font-semibold text-gray-700 mb-1">
-          Страна{" "}
-          <span className="text-gray-400 font-normal">(опционально)</span>
+          {tForm("countryLabel")}{" "}
+          <span className="text-gray-400 font-normal">
+            ({tForm("optional")})
+          </span>
         </label>
         <input
           type="text"
           value={country}
           onChange={(e) => setCountry(e.target.value)}
-          placeholder="Пример: Молдова"
+          placeholder={t("countryPlaceholder")}
           className="w-full rounded-xl border border-gray-300 p-3 text-sm text-gray-900 placeholder:text-gray-500 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
         />
       </div>
 
       <div className="flex justify-end gap-3 pt-2">
         <Button type="button" variant="secondary" onClick={onSuccess}>
-          Отмена
+          {tCommon("cancel")}
         </Button>
         <Button type="submit" isLoading={isLoading}>
-          Создать
+          {tCommon("save")}
         </Button>
       </div>
     </form>

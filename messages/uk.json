@@ -18,7 +18,27 @@
     "cancel": "Скасувати",
     "save": "Зберегти",
     "delete": "Видалити",
-    "updating": "Оновлення..."
+    "updating": "Оновлення...",
+    "signin": "Увійти через Google",
+    "signout": "Вийти",
+    "editing": "Редагування"
+  },
+  "User": {
+    "avatar": "Аватар",
+    "enteredAs": "Ви увійшли як:",
+    "role": "Роль:",
+    "roles": {
+      "user": "Відповідальний за літературу",
+      "superadmin": "Адміністратор"
+    }
+  },
+  "Logo": {
+    "logo": "Менеджер <colored>Літератури</colored>"
+  },
+  "CommonForm": {
+    "nameLabel": "Назва збору",
+    "countryLabel": "Країна",
+    "optional": "опціонально"
   },
   "Dashboard": {
     "title": "Панель управління",
@@ -103,5 +123,84 @@
     "yes": "Так",
     "no": "Ні",
     "pcs": "шт."
+  },
+  "CongregationCard": {
+    "editModalTitle": "Редагувати збір",
+    "deleteModalTitle": "Видалити збір?",
+    "deleteModalMessage": "Ви впевнені, що хочете видалити збір \"{name}\"? Ця дія безповоротно видалить усіх створених вісників та їхні замовлення.",
+    "errors": {
+      "deleteLog": "Помилка при видаленні:",
+      "deleteAlert": "Сталася помилка при видаленні збору."
+    }
+  },
+  "CongregationInfoCard": {
+    "title": "Інформація",
+    "nameLabel": "Назва:",
+    "countryLabel": "Країна:"
+  },
+  "CongregationList": {
+    "title": "Ваші збори"
+  },
+  "CreateCongregationForm": {
+    "namePlaceholder": "Наприклад: Центральний",
+    "countryPlaceholder": "Наприклад: Україна",
+    "errorAlert": "Помилка при створенні збору"
+  },
+  "EditCongregationForm": {
+    "errorLog": "Помилка при оновленні:",
+    "errorAlert": "Сталася помилка при оновленні збору"
+  },
+  "CongregationDetailsScreen": {
+    "backToButton": "До списку зборів",
+    "title": "Збір: \"{name}\"",
+    "description": "Управління вісниками збору та їхніми замовленнями літератури.",
+    "publishersTitle": "Вісники",
+    "addPublisherButton": "Додати вісника",
+    "modalTitle": "Додати вісника до \"{name}\""
+  },
+  "CongregationWarehouse": {
+    "warehouseTitle": "Склад замовлень.",
+    "emptyStateTitle": "На складі поки нічого немає.",
+    "emptyStateDescription": "Тут відображатимуться публікації, коли вісники зроблять замовлення.",
+    "statusOrdered": "В замовленні...",
+    "statusInStock": "На складі (чекає видачі).",
+    "totalQuantity": "Загальна к-сть:",
+    "pcs": "шт.",
+    "pendingBtn": "Секундочку...",
+    "receiveBtn": "Прибуло!"
+  },
+  "CongregationsScreen": {
+    "title": "Панель керування",
+    "description": "Тут ви можете керувати зборами, замовленнями та вісниками.",
+    "createSectionTitle": "Створіть збір.",
+    "createButtonTitle": "Створіть збір",
+    "createButtonText": "Збір",
+    "modalTitle": "Новий збір"
+  },
+  "PublisherDetailsScreen": {
+    "backToButton": "Назад до збору",
+    "firstNameLabel": "Ім'я:",
+    "lastNameLabel": "Прізвище:",
+    "noLastName": "не додано",
+    "ordersTitle": "Замовлення літератури",
+    "newOrderButton": "Нове замовлення",
+    "specialOrdersTab": "Спеціальні замовлення ({count})",
+    "regularOrdersTab": "Регулярні замовлення ({count})",
+    "noSpecialOrders": "Немає активних спеціальних замовлень (книг, брошур).",
+    "noRegularOrders": "Немає активних щомісячних замовлень (журналів, зошитів).",
+    "historyTitle": "Історія виконаних замовлень ({count})",
+    "modalTitle": "Нове замовлення для: {name}"
+  },
+  "HomeView": {
+    "title": "Менеджер замовлень літератури.",
+    "description": "Зручний інструмент для замовлення, обліку та розподілу друкованих видань.",
+    "welcome": "Ласкаво просимо, {name}!",
+    "noName": "без імені",
+    "dashboardLink": "Перейти до панелі керування",
+    "loginLink": "Увійти в систему"
+  },
+  "LoginView": {
+    "title": "Увійти в систему",
+    "description": "Круйте замовленнями літератури."
   }
 }

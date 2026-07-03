@@ -16,6 +16,7 @@ export interface Publisher {
   name: string;
   lastName?: string | null;
   congregationId: string;
+  pendingCount?: number;
 }
 
 export interface BaseFormProps {

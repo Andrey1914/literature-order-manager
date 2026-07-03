@@ -49,6 +49,12 @@ export const PublisherCard = ({ publisher }: PublisherCardProps) => {
           <div className="min-w-0 flex-1">
             <h4 className="font-bold text-gray-800 group-hover:text-indigo-700 transition-colors wrap-break-word">
               {publisher.name}
+
+              {publisher.pendingCount && publisher.pendingCount > 0 ? (
+                <span className="ml-2 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-indigo-600 px-1.5 text-xs font-bold text-white ring-2 ring-white animate-pulse">
+                  {publisher.pendingCount}
+                </span>
+              ) : null}
             </h4>
             {publisher.lastName && (
               <p className="font-bold text-gray-500 mt-1.5 flex items-center gap-1 wrap-break-word">
@@ -57,7 +63,7 @@ export const PublisherCard = ({ publisher }: PublisherCardProps) => {
             )}
           </div>
 
-          <div className="shrink-0">
+          <div className="shrink-0" onClick={(e) => e.stopPropagation()}>
             <CardActions
               onEdit={() => setIsEditOpen(true)}
               onDelete={() => setIsDeleteOpen(true)}

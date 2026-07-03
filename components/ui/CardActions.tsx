@@ -1,18 +1,20 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { Button } from "./Button";
 import { PencilIcon } from "./icons/PencilIcon";
 import { TrashIcon } from "./icons/TrashIcon";
 import { CardActionsProps } from "./types";
 
 export const CardActions = ({ onEdit, onDelete }: CardActionsProps) => {
+  const t = useTranslations("Common");
   return (
     <div className="flex gap-1.5" onClick={(e) => e.stopPropagation()}>
       <Button
         type="button"
         variant="icon"
         onClick={onEdit}
-        title="Редактировать"
+        title={t("editing")}
         className="bg-white border-gray-200! shadow-sm text-gray-700 hover:text-indigo-600"
       >
         <PencilIcon className="h-4 w-4" />
@@ -22,7 +24,7 @@ export const CardActions = ({ onEdit, onDelete }: CardActionsProps) => {
         type="button"
         variant="icon"
         onClick={onDelete}
-        title="Удалить"
+        title={t("delete")}
         className="bg-white border-gray-200! shadow-sm text-gray-700 hover:text-red-600"
       >
         <TrashIcon className="h-4 w-4" />

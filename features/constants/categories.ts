@@ -1,8 +1,8 @@
 export const CATEGORIES = [
-  { value: "BOOK", label: "Книга", type: "SPECIAL" },
-  { value: "BROCHURE", label: "Брошюра", type: "SPECIAL" },
-  { value: "CD", label: "Диск", type: "SPECIAL" },
-  { value: "ANNUAL_EDITION", label: "Ежегодное издание", type: "SPECIAL" },
-  { value: "MAGAZINE", label: "Журнал", type: "REGULAR" },
-  { value: "WORKBOOK", label: "Рабочая тетрадь", type: "REGULAR" },
+  { value: "BOOK", type: "SPECIAL" },
+  { value: "BROCHURE", type: "SPECIAL" },
+  { value: "CD", type: "SPECIAL" },
+  { value: "ANNUAL_EDITION", type: "SPECIAL" },
+  { value: "MAGAZINE", type: "REGULAR" },
+  { value: "WORKBOOK", type: "REGULAR" },
 ] as const;
