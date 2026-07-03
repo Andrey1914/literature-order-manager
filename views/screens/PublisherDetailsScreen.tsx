@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { ArrowLeftIcon } from "@/components/ui/icons/ArrowLeftIcon";
 import { Button } from "@/components/ui/Button";
 import { usePublisherStore } from "@/features/publishers/store";
@@ -15,6 +16,8 @@ import {
 } from "@/features/orders/actions";
 
 export const PublisherDetailsScreen = () => {
+  const t = useTranslations("PublisherDetailsScreen");
+
   const { activePublisherId, setActivePublisher, publishers } =
     usePublisherStore();
   const {
@@ -54,7 +57,7 @@ export const PublisherDetailsScreen = () => {
           console.error(regularRes.error);
         }
       } catch (error) {
-        console.error("Критическая ошибка загрузки:", error);
+        console.error("Critical loading error:", error);
       } finally {
         setIsLoading(false);
       }
@@ -89,15 +92,15 @@ export const PublisherDetailsScreen = () => {
         className="flex items-center gap-2"
       >
         <ArrowLeftIcon className="h-4 w-4" />
-        <span>Назад к собранию</span>
+        <span>{t("backToButton")}</span>
       </Button>
 
       <div className="border-b border-gray-200 pb-6">
         <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-          <span>Имя:</span> {name}
+          <span>{t("firstNameLabel")}</span> {name}
         </h1>
         <p className="mt-2 text-md text-gray-500 flex items-center gap-1">
-          <span>Фамилия:</span> {lastName ?? "не добавлена"}
+          <span>{t("lastNameLabel")}</span> {lastName ?? t("noLastName")}
         </p>
       </div>
 
@@ -106,10 +109,10 @@ export const PublisherDetailsScreen = () => {
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-4">
             <div className="flex items-center justify-between">
               <h3 className="text-xl font-bold text-gray-800">
-                Заказы литературы
+                {t("ordersTitle")}
               </h3>
               <Button onClick={() => setIsOrderModalOpen(true)}>
-                + Новый заказ
+                + {t("newOrderButton")}
               </Button>
             </div>
 
@@ -122,7 +125,7 @@ export const PublisherDetailsScreen = () => {
                     : "border-transparent text-gray-400 hover:text-gray-600"
                 }`}
               >
-                Специальные заказы ({activeSpecial.length})
+                {t("specialOrdersTab", { count: activeSpecial.length })}
               </button>
               <button
                 onClick={() => setActiveTab("REGULAR")}
@@ -132,7 +135,7 @@ export const PublisherDetailsScreen = () => {
                     : "border-transparent text-gray-400 hover:text-gray-600"
                 }`}
               >
-                Регулярные заказы ({activeRegular.length})
+                {t("regularOrdersTab", { count: activeRegular.length })}
               </button>
             </div>
           </div>
@@ -145,7 +148,7 @@ export const PublisherDetailsScreen = () => {
           ) : activeTab === "SPECIAL" ? (
             activeSpecial.length === 0 ? (
               <div className="bg-white p-12 rounded-2xl shadow-sm border border-gray-100 text-center text-gray-400 text-sm">
-                Нет активных специальных заказов (книг, брошюр).
+                {t("noSpecialOrders")}
               </div>
             ) : (
               <div className="space-y-3">
@@ -156,7 +159,7 @@ export const PublisherDetailsScreen = () => {
             )
           ) : activeRegular.length === 0 ? (
             <div className="bg-white p-12 rounded-2xl shadow-sm border border-gray-100 text-center text-gray-400 text-sm">
-              Нет активных ежемесячных подписок (журналов, тетрадей).
+              {t("noRegularOrders")}
             </div>
           ) : (
             <div className="space-y-3">
@@ -169,7 +172,7 @@ export const PublisherDetailsScreen = () => {
           {activeTab === "SPECIAL" && historySpecial.length > 0 && (
             <div className="pt-4 space-y-3">
               <h4 className="text-xs text-gray-400 font-bold uppercase tracking-wider px-1">
-                История выполненных заказов ({historySpecial.length})
+                {t("historyTitle", { count: historySpecial.length })}
               </h4>
               <div className="space-y-3 opacity-75">
                 {historySpecial.map((order) => (
@@ -189,7 +192,7 @@ export const PublisherDetailsScreen = () => {
       <Modal
         isOpen={isOrderModalOpen}
         onClose={() => setIsOrderModalOpen(false)}
-        title={`Новый заказ для: ${name}`}
+        title={t("modalTitle", { name })}
       >
         <CreateOrderForm
           publisherId={currentPublisher.id}

@@ -18,7 +18,27 @@
     "cancel": "Cancel",
     "save": "Save",
     "delete": "Delete",
-    "updating": "Updating..."
+    "updating": "Updating...",
+    "signin": "Sign in with Google",
+    "signout": "Sign out",
+    "editing": "Editing"
+  },
+  "User": {
+    "avatar": "Avatar",
+    "enteredAs": "You are signed in as:",
+    "role": "Role:",
+    "roles": {
+      "user": "Literature Servant",
+      "superadmin": "Administrator"
+    }
+  },
+  "Logo": {
+    "logo": "Literature <colored>Manager</colored>"
+  },
+  "CommonForm": {
+    "nameLabel": "Congregation Name",
+    "countryLabel": "Country",
+    "optional": "optional"
   },
   "Dashboard": {
     "title": "Dashboard",
@@ -103,5 +123,84 @@
     "yes": "Yes",
     "no": "No",
     "pcs": "pcs."
+  },
+  "CongregationCard": {
+    "editModalTitle": "Edit Congregation",
+    "deleteModalTitle": "Delete Congregation?",
+    "deleteModalMessage": "Are you sure you want to delete congregation \"{name}\"? This action will permanently delete all created publishers and their orders.",
+    "errors": {
+      "deleteLog": "Error during deletion:",
+      "deleteAlert": "An error occurred while deleting the congregation."
+    }
+  },
+  "CongregationInfoCard": {
+    "title": "Information",
+    "nameLabel": "Name:",
+    "countryLabel": "Country:"
+  },
+  "CongregationList": {
+    "title": "Your Congregations"
+  },
+  "CreateCongregationForm": {
+    "namePlaceholder": "Example: Central",
+    "countryPlaceholder": "Example: Moldova",
+    "errorAlert": "Error creating congregation"
+  },
+  "EditCongregationForm": {
+    "errorLog": "Error during update:",
+    "errorAlert": "An error occurred while updating the congregation"
+  },
+  "CongregationDetailsScreen": {
+    "backToButton": "Back to congregations",
+    "title": "Congregation: \"{name}\"",
+    "description": "Manage congregation publishers and their literature orders.",
+    "publishersTitle": "Publishers",
+    "addPublisherButton": "Add publisher",
+    "modalTitle": "Add publisher to \"{name}\""
+  },
+  "CongregationWarehouse": {
+    "warehouseTitle": "Order Warehouse.",
+    "emptyStateTitle": "The warehouse is empty.",
+    "emptyStateDescription": "Publications will appear here once publishers place their orders.",
+    "statusOrdered": "Ordered...",
+    "statusInStock": "In Stock (awaiting collection).",
+    "totalQuantity": "Total qty:",
+    "pcs": "pcs.",
+    "pendingBtn": "One moment...",
+    "receiveBtn": "Arrived!"
+  },
+  "CongregationsScreen": {
+    "title": "Dashboard",
+    "description": "Here you can manage congregations, orders, and publishers.",
+    "createSectionTitle": "Create a congregation.",
+    "createButtonTitle": "Create a congregation",
+    "createButtonText": "Congregation",
+    "modalTitle": "New Congregation"
+  },
+  "PublisherDetailsScreen": {
+    "backToButton": "Back to congregation",
+    "firstNameLabel": "First name:",
+    "lastNameLabel": "Last name:",
+    "noLastName": "not added",
+    "ordersTitle": "Literature Orders",
+    "newOrderButton": "New order",
+    "specialOrdersTab": "Special orders ({count})",
+    "regularOrdersTab": "Regular subscriptions ({count})",
+    "noSpecialOrders": "No active special orders (books, brochures).",
+    "noRegularOrders": "No active monthly subscriptions (magazines, workbooks).",
+    "historyTitle": "Order history ({count})",
+    "modalTitle": "New order for: {name}"
+  },
+  "HomeView": {
+    "title": "Literature Order Manager.",
+    "description": "A convenient tool for ordering, tracking, and distributing printed publications.",
+    "welcome": "Welcome, {name}!",
+    "noName": "no name",
+    "dashboardLink": "Go to dashboard",
+    "loginLink": "Log in to the system"
+  },
+  "LoginView": {
+    "title": "Sign in to system",
+    "description": "Manage literature orders."
   }
 }

@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { Modal } from "./Modal";
 import { Button } from "./Button";
 import { ConfirmModalProps } from "./types";
@@ -12,6 +13,7 @@ export const ConfirmModal = ({
   message,
   isLoading,
 }: ConfirmModalProps) => {
+  const t = useTranslations("Common");
   return (
     <Modal isOpen={isOpen} onClose={onClose} title={title}>
       <div className="space-y-6">
@@ -23,7 +25,7 @@ export const ConfirmModal = ({
             onClick={onClose}
             disabled={isLoading}
           >
-            Отмена
+            {t("cancel")}
           </Button>
           <Button
             type="button"
@@ -31,7 +33,7 @@ export const ConfirmModal = ({
             isLoading={isLoading}
             onClick={onConfirm}
           >
-            Удалить
+            {t("delete")}
           </Button>
         </div>
       </div>

@@ -18,7 +18,27 @@
     "cancel": "Отмена",
     "save": "Сохранить",
     "delete": "Удалить",
-    "updating": "Обновление..."
+    "updating": "Обновление...",
+    "signin": "Войти через Google",
+    "signout": "Выйти",
+    "editing": "Редактировать"
+  },
+  "User": {
+    "avatar": "Аватар",
+    "enteredAs": "Вы вошли как:",
+    "role": "Роль:",
+    "roles": {
+      "user": "Ответственный за литературу",
+      "superadmin": "Администратор"
+    }
+  },
+  "Logo": {
+    "logo": "Менеджер <colored>Литературы</colored>"
+  },
+  "CommonForm": {
+    "nameLabel": "Название собрания",
+    "countryLabel": "Страна",
+    "optional": "опционально"
   },
   "Dashboard": {
     "title": "Панель управления",
@@ -103,5 +123,84 @@
     "yes": "Да",
     "no": "Нет",
     "pcs": "шт."
+  },
+  "CongregationCard": {
+    "editModalTitle": "Редактировать собрание",
+    "deleteModalTitle": "Удалить собрание?",
+    "deleteModalMessage": "Вы уверены, что хотите удалить собрание \"{name}\"? Это действие необратимо удалит всех созданных возвещателей и их заказы.",
+    "errors": {
+      "deleteLog": "Ошибка при удалении:",
+      "deleteAlert": "Произошла ошибка при удалении собрания."
+    }
+  },
+  "CongregationInfoCard": {
+    "title": "Информация",
+    "nameLabel": "Название:",
+    "countryLabel": "Страна:"
+  },
+  "CongregationList": {
+    "title": "Ваши собрания"
+  },
+  "CreateCongregationForm": {
+    "namePlaceholder": "Пример: Центральное",
+    "countryPlaceholder": "Пример: Молдова",
+    "errorAlert": "Ошибка при создании собрания"
+  },
+  "EditCongregationForm": {
+    "errorLog": "Ошибка при обновлении:",
+    "errorAlert": "Произошла ошибка при обновлении собрания"
+  },
+  "CongregationDetailsScreen": {
+    "backToButton": "К списку собраний",
+    "title": "Собрание: \"{name}\"",
+    "description": "Управление возвещателями собрания и их заказами литературы.",
+    "publishersTitle": "Возвещатели",
+    "addPublisherButton": "Добавить возвещателя",
+    "modalTitle": "Добавить возвещателя в \"{name}\""
+  },
+  "CongregationWarehouse": {
+    "warehouseTitle": "Склад заказов.",
+    "emptyStateTitle": "На складе пока ничего нет.",
+    "emptyStateDescription": "Здесь будут отображаться публикации, когда возвещатели оформят заказы.",
+    "statusOrdered": "В заказе...",
+    "statusInStock": "На складе (ждёт выдачи).",
+    "totalQuantity": "Общее кол-во:",
+    "pcs": "шт.",
+    "pendingBtn": "Секундочку...",
+    "receiveBtn": "Прибыло!"
+  },
+  "CongregationsScreen": {
+    "title": "Панель управления",
+    "description": "Здесь вы можете управлять собраниями, заказами и возвещателями.",
+    "createSectionTitle": "Создайте собрание.",
+    "createButtonTitle": "Создайте собрание",
+    "createButtonText": "Собрание",
+    "modalTitle": "Новое собрание"
+  },
+  "PublisherDetailsScreen": {
+    "backToButton": "Назад к собранию",
+    "firstNameLabel": "Имя:",
+    "lastNameLabel": "Фамилия:",
+    "noLastName": "не добавлена",
+    "ordersTitle": "Заказы литературы",
+    "newOrderButton": "Новый заказ",
+    "specialOrdersTab": "Специальные заказы ({count})",
+    "regularOrdersTab": "Регулярные заказы ({count})",
+    "noSpecialOrders": "Нет активных специальных заказов (книг, брошюр).",
+    "noRegularOrders": "Нет активных ежемесячных заказов (журналов, тетрадей).",
+    "historyTitle": "История выполненных заказов ({count})",
+    "modalTitle": "Новый заказ для: {name}"
+  },
+  "HomeView": {
+    "title": "Менеджер Заказов Литературы.",
+    "description": "Удобный инструмент для заказа, учета и распределения печатных изданий.",
+    "welcome": "Добро пожаловать, {name}!",
+    "noName": "нет имени",
+    "dashboardLink": "Перейти в панель управления",
+    "loginLink": "Войти в систему"
+  },
+  "LoginView": {
+    "title": "Войти в систему",
+    "description": "Управляйте заказами литературы."
   }
 }

@@ -18,7 +18,27 @@
     "cancel": "Откажи",
     "save": "Зачувај",
     "delete": "Избриши",
-    "updating": "Ажурирање..."
+    "updating": "Ажурирање...",
+    "signin": "Најави се преку Google",
+    "signout": "Одјави се",
+    "editing": "Уредување"
+  },
+  "User": {
+    "avatar": "Аватар",
+    "enteredAs": "Вие сте најавени како:",
+    "role": "Улога:",
+    "roles": {
+      "user": "Одговорен за литература",
+      "superadmin": "Администратор"
+    }
+  },
+  "Logo": {
+    "logo": "Менаџер за <colored>Литература</colored>"
+  },
+  "CommonForm": {
+    "nameLabel": "Име на собрание",
+    "countryLabel": "Земја",
+    "optional": "опционално"
   },
   "Dashboard": {
     "title": "Контролна табла",
@@ -41,14 +61,6 @@
     "quantityLabel": "Количина:",
     "deleteModalTitle": "Откажи нарачка",
     "deleteModalMessage": "Дали сте сигурни дека сакате целосно да ја избришете и откажете нарачката за \"{title}\" ({count} пар.)? Ова дејство не може да се поништи.",
-    "categories": {
-      "BOOK": "Книга",
-      "BROCHURE": "Брошура",
-      "WORKBOOK": "Роботна тетрад",
-      "MAGAZINE": "Списание",
-      "CD": "ЦД Диск",
-      "ANNUAL_EDITION": "Годишно издание"
-    },
     "statuses": {
       "ORDERED": "Нарачано",
       "EXPECTED": "Се очекува",
@@ -111,5 +123,84 @@
     "yes": "Да",
     "no": "Не",
     "pcs": "пар."
+  },
+  "CongregationCard": {
+    "editModalTitle": "Уреди собрание",
+    "deleteModalTitle": "Избриши собрание?",
+    "deleteModalMessage": "Дали сте сигурни дека сакате да го избришете собранието \"{name}\"? Оваа акција трајно ќе ги избрише сите создадени објавители и нивните нарачки.",
+    "errors": {
+      "deleteLog": "Грешка при бришење:",
+      "deleteAlert": "Се појави грешка при бришење на собранието."
+    }
+  },
+  "CongregationInfoCard": {
+    "title": "Информации",
+    "nameLabel": "Име:",
+    "countryLabel": "Земја:"
+  },
+  "CongregationList": {
+    "title": "Вашите собранија"
+  },
+  "CreateCongregationForm": {
+    "namePlaceholder": "На пример: Централно",
+    "countryPlaceholder": "На пример: Македонија",
+    "errorAlert": "Грешка при создавањето на собранието"
+  },
+  "EditCongregationForm": {
+    "errorLog": "Грешка при ажурирање:",
+    "errorAlert": "Се појави грешка при ажурирање на собранието"
+  },
+  "CongregationDetailsScreen": {
+    "backToButton": "Кон списокот на собранија",
+    "title": "Собрание: \"{name}\"",
+    "description": "Управување со објавителите на собранието и нивните нарачки за литература.",
+    "publishersTitle": "Објавители",
+    "addPublisherButton": "Додај објавител",
+    "modalTitle": "Додај објавител во \"{name}\""
+  },
+  "CongregationWarehouse": {
+    "warehouseTitle": "Склад на нарачки.",
+    "emptyStateTitle": "Складот моментално е празен.",
+    "emptyStateDescription": "Овде ќе се прикажуваат публикациите кога објавителите ќе направат нарачки.",
+    "statusOrdered": "Во нарачка...",
+    "statusInStock": "Во склад (чека подигање).",
+    "totalQuantity": "Вкупна количина:",
+    "pcs": "пар.",
+    "pendingBtn": "Момент...",
+    "receiveBtn": "Пристигна!"
+  },
+  "CongregationsScreen": {
+    "title": "Контролна табла",
+    "description": "Овде можете да управувате со собранијата, нарачките и објавителите.",
+    "createSectionTitle": "Создајте собрание.",
+    "createButtonTitle": "Создајте собрание",
+    "createButtonText": "Собрание",
+    "modalTitle": "Ново собрание"
+  },
+  "PublisherDetailsScreen": {
+    "backToButton": "Назад кон собранието",
+    "firstNameLabel": "Име:",
+    "lastNameLabel": "Презиме:",
+    "noLastName": "не е додадено",
+    "ordersTitle": "Нарачки на литература",
+    "newOrderButton": "Нова нарачка",
+    "specialOrdersTab": "Специјални нарачки ({count})",
+    "regularOrdersTab": "Редовни нарачки ({count})",
+    "noSpecialOrders": "Нема активни специјални нарачки (книги, брошури).",
+    "noRegularOrders": "Нема активни месечни нарачки (списанија, работни тетратки).",
+    "historyTitle": "Историја на исполнети нарачки ({count})",
+    "modalTitle": "Нова нарачка за: {name}"
+  },
+  "HomeView": {
+    "title": "Менаџер за нарачки на литература.",
+    "description": "Практична алатка за нарачување, евиденција и распределба на печатени изданија.",
+    "welcome": "Добредојдовте, {name}!",
+    "noName": "нема име",
+    "dashboardLink": "Оди на контролната табла",
+    "loginLink": "Најави се во системот"
+  },
+  "LoginView": {
+    "title": "Најави се во системот",
+    "description": "Управувајте со нарачките за литература."
   }
 }

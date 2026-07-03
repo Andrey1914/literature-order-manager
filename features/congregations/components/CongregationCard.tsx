@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { CongregationCardProps } from "./types";
 import { Modal } from "@/components/ui/Modal";
 import { ConfirmModal } from "@/components/ui/ConfirmModal";
@@ -14,6 +15,8 @@ export const CongregationCard = ({
   isActive,
   onSelect,
 }: CongregationCardProps) => {
+  const t = useTranslations("CongregationCard");
+
   const deleteCongregation = useCongregationStore(
     (state) => state.deleteCongregation,
   );
@@ -29,7 +32,8 @@ export const CongregationCard = ({
       deleteCongregation(item.id);
       setIsDeleteOpen(false);
     } catch (error) {
-      console.error("Ошибка при удалении:", error);
+      console.error(t("errors.deleteLog"), error);
+      alert(t("errors.deleteAlert"));
     } finally {
       setIsLoading(false);
     }
@@ -70,14 +74,14 @@ export const CongregationCard = ({
         onClose={() => setIsDeleteOpen(false)}
         onConfirm={handleDelete}
         isLoading={isLoading}
-        title="Удалить собрание?"
-        message={`Вы уверены, что хотите удалить собрание "${item.name}"? Это действие необратимо удалит всех созданных возвещателей и их заказы.`}
+        title={t("deleteModalTitle")}
+        message={t("deleteModalMessage", { name: item.name })}
       />
 
       <Modal
         isOpen={isEditOpen}
         onClose={() => setIsEditOpen(false)}
-        title="Редактировать собрание"
+        title={t("editModalTitle")}
       >
         <EditCongregationForm
           item={item}

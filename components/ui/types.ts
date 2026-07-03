@@ -4,6 +4,13 @@ import {
   ReactNode,
 } from "react";
 import Link from "next/link";
+import { UserRole } from "@/types/next-auth";
+
+export interface UserProfileProps {
+  image?: string | null;
+  name?: string | null;
+  role: UserRole;
+}
 
 interface BaseModalProps {
   isOpen: boolean;

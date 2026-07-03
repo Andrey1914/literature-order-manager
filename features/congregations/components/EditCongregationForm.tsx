@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { EditCongregationFormProps } from "./types";
 import { Button } from "@/components/ui/Button";
 import { useCongregationStore } from "../store";
@@ -10,6 +11,10 @@ export const EditCongregationForm = ({
   item,
   onSuccess,
 }: EditCongregationFormProps) => {
+  const t = useTranslations("EditCongregationForm");
+  const tCommon = useTranslations("Common");
+  const tForm = useTranslations("CommonForm");
+
   const updateCongregation = useCongregationStore(
     (state) => state.updateCongregation,
   );
@@ -26,7 +31,8 @@ export const EditCongregationForm = ({
       updateCongregation(updated);
       onSuccess();
     } catch (error) {
-      console.error("Ошибка при обновлении:", error);
+      console.error(t("errorLog"), error);
+      alert(t("errorAlert"));
     } finally {
       setIsLoading(false);
     }
@@ -36,7 +42,7 @@ export const EditCongregationForm = ({
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
         <label className="block text-sm font-semibold text-gray-700 mb-1">
-          Название собрания <span className="text-red-500">*</span>
+          {tForm("nameLabel")} <span className="text-red-500">*</span>
         </label>
         <input
           type="text"
@@ -48,8 +54,10 @@ export const EditCongregationForm = ({
       </div>
       <div>
         <label className="block text-sm font-semibold text-gray-700 mb-1">
-          Страна{" "}
-          <span className="text-gray-400 font-normal">(опционально)</span>
+          {tForm("countryLabel")}{" "}
+          <span className="text-gray-400 font-normal">
+            ({tForm("optional")})
+          </span>
         </label>
         <input
           type="text"
@@ -60,10 +68,10 @@ export const EditCongregationForm = ({
       </div>
       <div className="flex justify-end gap-3 pt-2">
         <Button type="button" variant="secondary" onClick={onSuccess}>
-          Отмена
+          {tCommon("cancel")}{" "}
         </Button>
         <Button type="submit" isLoading={isLoading}>
-          Сохранить
+          {tCommon("save")}
         </Button>
       </div>
     </form>

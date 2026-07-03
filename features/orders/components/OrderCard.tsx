@@ -8,7 +8,12 @@ import {
   deleteOrder,
   updateOrderDetails,
 } from "@/features/orders/actions";
-import { CATEGORY_LABELS, STATUS_CONFIG, formatDate } from "../utils";
+import {
+  CATEGORY_LABELS,
+  STATUS_CONFIG,
+  formatDate,
+  getActionKey,
+} from "../utils";
 import { OrderCardProps } from "./types";
 
 import { ConfirmModal } from "@/components/ui/ConfirmModal";
@@ -35,14 +40,9 @@ export const OrderCard = ({ order, isRegular }: OrderCardProps) => {
   const statusStyle =
     STATUS_CONFIG[currentStatus]?.className || "bg-gray-100 text-gray-600";
   const categoryStyle =
-    CATEGORY_LABELS[order.category]?.className || "bg-gray-50 text-gray-600";
-  const hasBtnAction = STATUS_CONFIG[currentStatus]?.btnLabel;
+    CATEGORY_LABELS[order.category]?.className || CATEGORY_LABELS;
 
-  const getActionKey = (status: string) => {
-    if (status === "ORDERED") return "EXPECT";
-    if (status === "EXPECTED") return "DELIVER";
-    return "DELIVERED";
-  };
+  const hasBtnAction = STATUS_CONFIG[currentStatus]?.btnLabel;
 
   const historyDates = Array.isArray(order.deliveryHistory)
     ? order.deliveryHistory
@@ -108,7 +108,9 @@ export const OrderCard = ({ order, isRegular }: OrderCardProps) => {
           >
             {tCategories(order.category)}
           </span>
-          <span className={`px-2 py-0.5 text-xs rounded-md ${statusStyle}`}>
+          <span
+            className={`px-2 py-0.5 text-xs rounded-md ${order.status === "EXPECTED" ? `${statusStyle} animate-pulse` : statusStyle}`}
+          >
             {t(`statuses.${order.status}`)}
           </span>
           {isRegular && (

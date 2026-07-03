@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { ArrowLeftIcon } from "@/components/ui/icons/ArrowLeftIcon";
 import { Button } from "@/components/ui/Button";
 import { Modal } from "@/components/ui/Modal";
@@ -13,6 +14,8 @@ import { getPublishersByCongregation } from "@/features/publishers/actions";
 import { CongregationWarehouse } from "@/features/congregations/components/CongregationWarehouse";
 
 export const CongregationDetailsScreen = () => {
+  const t = useTranslations("CongregationDetailsScreen");
+
   const { activeCongregationId, setActiveCongregation, congregations } =
     useCongregationStore();
   const { setPublishers, setIsLoading } = usePublisherStore();
@@ -59,29 +62,29 @@ export const CongregationDetailsScreen = () => {
         className="flex items-center gap-2"
       >
         <ArrowLeftIcon className="h-4 w-4" />
-        <span>К списку собраний</span>
+        <span>{t("backToButton")}</span>
       </Button>
 
       <div className="border-b border-gray-200 pb-6">
         <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-          Собрание: &ldquo;{name}&rdquo;
+          {t("title", { name })}
         </h1>
-        <p className="mt-2 text-lg text-gray-600">
-          Управление возвещателями собрания и их заказами литературы.
-        </p>
+        <p className="mt-2 text-lg text-gray-600">{t("description")}</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div className="lg:col-span-2 space-y-6">
+        <div className="lg:col-span-2 space-y-6 order-2 lg:order-1">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-            <h3 className="text-xl font-bold text-gray-800">Возвещатели</h3>
+            <h3 className="text-xl font-bold text-gray-800">
+              {t("publishersTitle")}
+            </h3>
             <div className="w-full sm:w-auto">
               <Button
                 title="Добавить возвещателя"
                 onClick={() => setIsModalOpen(true)}
                 className="w-full sm:w-auto"
               >
-                + Добавить возвещателя
+                + {t("addPublisherButton")}
               </Button>
             </div>
           </div>
@@ -89,7 +92,7 @@ export const CongregationDetailsScreen = () => {
           <PublisherList />
         </div>
 
-        <div className="space-y-6">
+        <div className="space-y-6 order-1 lg:order-2">
           <CongregationInfoCard name={name} country={country} />
           <CongregationWarehouse congregationId={activeCongregation.id} />
         </div>
@@ -98,7 +101,7 @@ export const CongregationDetailsScreen = () => {
       <Modal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        title={`Добавить возвещателя в "${name}"`}
+        title={t("modalTitle", { name })}
       >
         <CreatePublisherForm
           congregationId={activeCongregation.id}

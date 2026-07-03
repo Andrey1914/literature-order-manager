@@ -9,20 +9,8 @@ import {
   usePathname,
   useRouter,
 } from "@/i18n/config";
-import {
-  UkraineFlagIcon,
-  RussiaFlagIcon,
-  MacedoniaFlagIcon,
-  UkFlagIcon,
-} from "@/components/ui/icons/FlagIcon";
-import { LanguageIcon } from "@/components/ui/icons/LanguageIcon";
 
-const flagIcons: Record<Locale, React.ComponentType<{ className?: string }>> = {
-  ru: RussiaFlagIcon,
-  en: UkFlagIcon,
-  uk: UkraineFlagIcon,
-  mk: MacedoniaFlagIcon,
-};
+import { flagIcons } from "@/components/ui/icons/utils";
 
 export const LanguageSwitcher = () => {
   const currentLocale = useLocale() as Locale;
@@ -50,6 +38,8 @@ export const LanguageSwitcher = () => {
     setIsOpen(false);
   };
 
+  const CurrentFlag = flagIcons[currentLocale];
+
   return (
     <div className="relative inline-block text-left" ref={containerRef}>
       <button
@@ -57,9 +47,10 @@ export const LanguageSwitcher = () => {
         onClick={() => setIsOpen(!isOpen)}
         className="w-full pl-3 pr-8 py-1.5 text-xs font-medium bg-white border border-gray-200 rounded-lg shadow-sm focus:outline-none cursor-pointer text-gray-700 flex items-center gap-2"
       >
-        <LanguageIcon />
+        {CurrentFlag && (
+          <CurrentFlag className="w-4 h-3 object-cover rounded-sm shrink-0" />
+        )}{" "}
         <span>{localeNames[currentLocale].name}</span>
-
         <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none text-gray-400 text-[10px]">
           ▼
         </span>
