@@ -38,6 +38,22 @@ export const Header = ({ session }: WithSessionProps) => {
 
         <div className="hidden items-center gap-6 md:flex">
           <LanguageSwitcher />
+          {session?.user?.role === "superadmin" && (
+            <>
+              <Link
+                href="/admin"
+                className="px-3 py-2 text-xs font-semibold text-indigo-700 bg-indigo-50 hover:bg-indigo-100 rounded-xl transition-all"
+              >
+                Администрирование
+              </Link>
+              <Link
+                href="/dashboard"
+                className="px-3 py-2 text-xs font-semibold text-indigo-700 bg-indigo-50 hover:bg-indigo-100 rounded-xl transition-all"
+              >
+                Панель управления
+              </Link>
+            </>
+          )}
           {/* <nav className="flex items-center gap-4 text-sm font-medium text-gray-600">
             <Link
               href="/dashboard"
@@ -120,6 +136,22 @@ export const Header = ({ session }: WithSessionProps) => {
 
             <div className="flex flex-col pt-2 gap-5">
               <LanguageSwitcher />
+              {session?.user?.role === "superadmin" && (
+                <>
+                  <Link
+                    href="/admin"
+                    className="px-3 py-2 text-xs font-semibold text-indigo-700 bg-indigo-50 hover:bg-indigo-100 rounded-xl transition-all"
+                  >
+                    Администрирование
+                  </Link>
+                  <Link
+                    href="/dashboard"
+                    className="px-3 py-2 text-xs font-semibold text-indigo-700 bg-indigo-50 hover:bg-indigo-100 rounded-xl transition-all"
+                  >
+                    Панель управления
+                  </Link>
+                </>
+              )}
               <SignOutForm />
             </div>
           </div>
