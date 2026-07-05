@@ -4,4 +4,5 @@ export type {
   Congregation,
   BaseFormProps,
   Publisher,
+  UserRowCardProps,
 } from "./types";
