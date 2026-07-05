@@ -16,9 +16,9 @@ import {
 } from "../utils";
 import { OrderCardProps } from "./types";
 
-import { ConfirmModal } from "@/components/ui/ConfirmModal";
+import { ConfirmModal } from "@/components/ui/modals";
 import { EditOrderModal } from "./EditOrderModal";
-import { CardActions } from "@/components/ui/CardActions";
+import { CardActions } from "@/components/ui/buttons";
 
 export const OrderCard = ({ order, isRegular }: OrderCardProps) => {
   const t = useTranslations("OrderCard");

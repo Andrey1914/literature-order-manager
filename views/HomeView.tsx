@@ -1,8 +1,5 @@
-"use client";
-
 import { useTranslations } from "next-intl";
-import { ButtonLink } from "@/components/ui/ButtonLink";
-import { SignOutForm } from "@/components/forms/SignOutForm";
+import { ButtonLink, SignOutButton } from "@/components/ui/buttons";
 import { WithSessionProps } from "@/types";
 
 export const HomeView = ({ session }: WithSessionProps) => {
@@ -30,7 +27,7 @@ export const HomeView = ({ session }: WithSessionProps) => {
                 <ButtonLink href="/dashboard" variant="primary">
                   {t("dashboardLink")}
                 </ButtonLink>
-                <SignOutForm />
+                <SignOutButton />
               </div>
             </div>
           ) : (

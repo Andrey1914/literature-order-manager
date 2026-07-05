@@ -4,7 +4,7 @@ import {
   RussiaFlagIcon,
   MacedoniaFlagIcon,
   UkFlagIcon,
-} from "@/components/ui/icons/FlagIcon";
+} from "@/components/ui/icons";
 
 export const flagIcons: Record<
   Locale,

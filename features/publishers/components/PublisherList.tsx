@@ -1,5 +1,3 @@
-"use client";
-
 import { useTranslations } from "next-intl";
 import { usePublisherStore } from "../store";
 import { PublisherCard } from "./PublisherCard";

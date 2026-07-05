@@ -1,7 +1,5 @@
-"use client";
-
-import { ModalProps } from "./types";
-import { CloseIcon } from "@/components/ui/icons/CloseIcon";
+import { ModalProps } from "../types";
+import { CloseIcon } from "@/components/ui/icons";
 
 export const Modal = ({ isOpen, onClose, title, children }: ModalProps) => {
   if (!isOpen) return null;

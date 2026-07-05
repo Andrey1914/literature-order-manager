@@ -2,18 +2,20 @@
 
 import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
-import { ArrowLeftIcon } from "@/components/ui/icons/ArrowLeftIcon";
-import { Button } from "@/components/ui/Button";
-import { usePublisherStore } from "@/features/publishers/store";
-import { useOrderStore } from "@/features/orders/store";
-import { PublisherStatusCard } from "@/features/publishers/components/PublisherStatusCard";
-import { OrderCard } from "@/features/orders/components/OrderCard";
-import { CreateOrderForm } from "@/features/orders/components/CreateOrderForm";
-import { Modal } from "@/components/ui/Modal";
 import {
   getSpecialOrders,
   getRegularSubscriptions,
 } from "@/features/orders/actions";
+
+import { usePublisherStore } from "@/features/publishers/store";
+import { useOrderStore } from "@/features/orders/store";
+
+import { PublisherStatusCard } from "@/features/publishers/components";
+import { OrderCard, CreateOrderForm } from "@/features/orders/components";
+
+import { ArrowLeftIcon } from "@/components/ui/icons";
+import { Button } from "@/components/ui/buttons";
+import { Modal } from "@/components/ui/modals";
 
 export const PublisherDetailsScreen = () => {
   const t = useTranslations("PublisherDetailsScreen");

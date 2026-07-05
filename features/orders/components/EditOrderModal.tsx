@@ -2,8 +2,8 @@
 
 import { useTranslations } from "next-intl";
 import { useState } from "react";
-import { Modal } from "@/components/ui/Modal";
-import { Button } from "@/components/ui/Button";
+import { Modal } from "@/components/ui/modals";
+import { Button } from "@/components/ui/buttons";
 import { EditOrderModalProps } from "./types";
 
 export const EditOrderModal = ({

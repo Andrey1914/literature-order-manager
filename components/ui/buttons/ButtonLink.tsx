@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ButtonLinkProps } from "./types";
+import { ButtonLinkProps } from "../types";
 
 export const ButtonLink = ({
   href,

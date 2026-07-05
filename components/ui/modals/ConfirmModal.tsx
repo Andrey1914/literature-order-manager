@@ -1,9 +1,9 @@
-"use client";
+// "use client";
 
 import { useTranslations } from "next-intl";
 import { Modal } from "./Modal";
-import { Button } from "./Button";
-import { ConfirmModalProps } from "./types";
+import { Button } from "@/components/ui/buttons";
+import { ConfirmModalProps } from "../types";
 
 export const ConfirmModal = ({
   isOpen,

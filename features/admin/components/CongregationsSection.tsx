@@ -10,9 +10,9 @@ interface CongregationsSectionProps {
   congregations: CongregationData[];
 }
 
-export function CongregationsSection({
+export const CongregationsSection = ({
   congregations,
-}: CongregationsSectionProps) {
+}: CongregationsSectionProps) => {
   const t = useTranslations("AdminUserDetail");
 
   return (
@@ -32,4 +32,4 @@ export function CongregationsSection({
       )}
     </div>
   );
-}
+};

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { EditCongregationFormProps } from "./types";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/buttons";
 import { useCongregationStore } from "../store";
 import { updateCongregationAction } from "../actions";
 

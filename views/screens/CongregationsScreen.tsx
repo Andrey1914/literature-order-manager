@@ -2,11 +2,13 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { UsersIcon } from "@/components/ui/icons/UsersIcon";
-import { Modal } from "@/components/ui/Modal";
-import { CongregationList } from "@/features/congregations/components/CongregationList";
-import { CreateCongregationForm } from "@/features/congregations/components/CreateCongregationForm";
-import { Button } from "@/components/ui/Button";
+import { UsersIcon } from "@/components/ui/icons";
+import { Modal } from "@/components/ui/modals";
+import {
+  CreateCongregationForm,
+  CongregationList,
+} from "@/features/congregations/components";
+import { Button } from "@/components/ui/buttons";
 
 export const CongregationsScreen = () => {
   const t = useTranslations("CongregationsScreen");

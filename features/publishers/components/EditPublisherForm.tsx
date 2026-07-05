@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { usePublisherStore } from "../store";
 import { updatePublisher } from "../actions";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/buttons";
 import { EditPublisherFormProps } from "./types";
 
 export const EditPublisherForm = ({

@@ -1,6 +1,5 @@
 import { getAdminDashboardData } from "@/features/admin/actions";
-import { AdminErrorBlock } from "@/components/ui/AdminErrorBlock";
-import { AdminMainContent } from "@/components/ui/AdminMainContent";
+import { AdminErrorBlock, AdminMainContent } from "@/components/ui";
 
 export default async function AdminPage() {
   const { success, data: users, error } = await getAdminDashboardData();

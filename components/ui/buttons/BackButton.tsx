@@ -1,5 +1,5 @@
 import { Link } from "@/i18n/config";
-import { ArrowLeftIcon } from "@/components/ui/icons/ArrowLeftIcon";
+import { ArrowLeftIcon } from "@/components/ui/icons";
 import { useTranslations } from "next-intl";
 
 export function BackButton() {

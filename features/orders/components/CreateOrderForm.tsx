@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { useState } from "react";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/buttons";
 import { useOrderStore } from "../store";
 import { createSpecialOrder, createRegularSubscription } from "../actions";
 import { CreateOrderFormProps } from "./types";

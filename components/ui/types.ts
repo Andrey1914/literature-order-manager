@@ -9,7 +9,7 @@ import { UserRole } from "@/types/next-auth";
 export interface UserProfileProps {
   image?: string | null;
   name?: string | null;
-  role: UserRole;
+  role?: UserRole;
 }
 
 interface BaseModalProps {

@@ -2,16 +2,23 @@
 
 import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
-import { ArrowLeftIcon } from "@/components/ui/icons/ArrowLeftIcon";
-import { Button } from "@/components/ui/Button";
-import { Modal } from "@/components/ui/Modal";
+
+import { getPublishersByCongregation } from "@/features/publishers/actions";
+
 import { useCongregationStore } from "@/features/congregations/store";
 import { usePublisherStore } from "@/features/publishers/store";
-import { CreatePublisherForm } from "@/features/publishers/components/CreatePublisherForm";
-import { PublisherList } from "@/features/publishers/components/PublisherList";
-import { CongregationInfoCard } from "@/features/congregations/components/CongregationInfoCard";
-import { getPublishersByCongregation } from "@/features/publishers/actions";
-import { CongregationWarehouse } from "@/features/congregations/components/CongregationWarehouse";
+import {
+  CreatePublisherForm,
+  PublisherList,
+} from "@/features/publishers/components";
+import {
+  CongregationWarehouse,
+  CongregationInfoCard,
+} from "@/features/congregations/components";
+
+import { ArrowLeftIcon } from "@/components/ui/icons";
+import { Button } from "@/components/ui/buttons";
+import { Modal } from "@/components/ui/modals";
 
 export const CongregationDetailsScreen = () => {
   const t = useTranslations("CongregationDetailsScreen");

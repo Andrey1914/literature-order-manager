@@ -1,5 +1,5 @@
 import { useTranslations } from "next-intl";
-import { GoogleSignInButton } from "@/components/ui/GoogleSignInButton";
+import { GoogleSignInButton } from "@/components/ui/buttons/GoogleSignInButton";
 
 export const LoginView = () => {
   const t = useTranslations("LoginView");

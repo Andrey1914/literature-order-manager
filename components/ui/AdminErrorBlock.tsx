@@ -4,7 +4,7 @@ interface AdminErrorBlockProps {
   error: string | null | undefined;
 }
 
-export function AdminErrorBlock({ error }: AdminErrorBlockProps) {
+export const AdminErrorBlock = ({ error }: AdminErrorBlockProps) => {
   const t = useTranslations("AdminDashboard");
 
   return (
@@ -12,4 +12,4 @@ export function AdminErrorBlock({ error }: AdminErrorBlockProps) {
       {error || t("defaultError")}
     </div>
   );
-}
+};
