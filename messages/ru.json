@@ -21,7 +21,8 @@
     "updating": "Обновление...",
     "signin": "Войти через Google",
     "signout": "Выйти",
-    "editing": "Редактировать"
+    "editing": "Редактировать",
+    "pcs": "шт."
   },
   "User": {
     "avatar": "Аватар",
@@ -202,5 +203,30 @@
   "LoginView": {
     "title": "Войти в систему",
     "description": "Управляйте заказами литературы."
+  },
+  "AdminUserDetail": {
+    "backToList": "Назад к списку",
+    "defaultUserAlt": "Пользователь",
+    "noName": "Без имени",
+    "roleSuperadmin": "Администратор",
+    "roleLiterature": "Ответственный за литературу",
+    "sectionTitle": "Собрания и заказы",
+    "noCongregations": "У этого служителя литературы ещё нет созданных собраний.",
+    "congregationTitle": "Собрание: {name}",
+    "noPublishers": "В собрании нет возвещателей",
+    "ordersCount": "Заказов: {count}",
+    "noActiveOrders": "Нет активных заказов",
+    "noCongregationsList": "Нет собраний"
+  },
+  "Navigation": {
+    "administration": "Администрирование",
+    "dashboard": "Панель управления",
+    "toggleMenu": "Переключить меню"
+  },
+  "AdminDashboard": {
+    "defaultError": "Произошла ошибка при загрузке данных",
+    "title": "Панель администратора",
+    "description": "Выберите служителя литературы для детального просмотра его собрания и заказов.",
+    "noUsers": "Пользователи не найдены"
   }
 }

@@ -21,7 +21,8 @@
     "updating": "Ажурирање...",
     "signin": "Најави се преку Google",
     "signout": "Одјави се",
-    "editing": "Уредување"
+    "editing": "Уредување",
+    "pcs": "пар."
   },
   "User": {
     "avatar": "Аватар",
@@ -202,5 +203,30 @@
   "LoginView": {
     "title": "Најави се во системот",
     "description": "Управувајте со нарачките за литература."
+  },
+  "AdminUserDetail": {
+    "backToList": "Назад кон списокот",
+    "defaultUserAlt": "Корисник",
+    "noName": "Без име",
+    "roleSuperadmin": "Администратор",
+    "roleLiterature": "Одговорен за литература",
+    "sectionTitle": "Собранија и нарачки",
+    "noCongregations": "Овој слуга за литература сè уште нема создадено собранија.",
+    "congregationTitle": "Собрание: {name}",
+    "noPublishers": "Во собранието нема објавители",
+    "ordersCount": "Нарачки: {count}",
+    "noActiveOrders": "Нема активни нарачки",
+    "noCongregationsList": "Нема собранија"
+  },
+  "Navigation": {
+    "administration": "Администрација",
+    "dashboard": "Контролна табла",
+    "toggleMenu": "Префрли мени"
+  },
+  "AdminDashboard": {
+    "defaultError": "Се случи грешка при вчитување на податоците",
+    "title": "Администраторски панел",
+    "description": "Изберете слуга за литература за детален преглед на неговото собрание и нарачки.",
+    "noUsers": "Не се пронајдени корисници"
   }
 }

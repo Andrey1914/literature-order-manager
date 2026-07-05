@@ -21,7 +21,8 @@
     "updating": "Оновлення...",
     "signin": "Увійти через Google",
     "signout": "Вийти",
-    "editing": "Редагування"
+    "editing": "Редагування",
+    "pcs": "шт."
   },
   "User": {
     "avatar": "Аватар",
@@ -202,5 +203,30 @@
   "LoginView": {
     "title": "Увійти в систему",
     "description": "Круйте замовленнями літератури."
+  },
+  "AdminUserDetail": {
+    "backToList": "Назад до списку",
+    "defaultUserAlt": "Користувач",
+    "noName": "Без імені",
+    "roleSuperadmin": "Адміністратор",
+    "roleLiterature": "Відповідальний за літературу",
+    "sectionTitle": "Збори та замовлення",
+    "noCongregations": "У цього служителя літератури ще немає створених зборів.",
+    "congregationTitle": "Збори: {name}",
+    "noPublishers": "У зборах немає возвещателів",
+    "ordersCount": "Замовлень: {count}",
+    "noActiveOrders": "Немає активних замовлень",
+    "noCongregationsList": "Немає зборів"
+  },
+  "Navigation": {
+    "administration": "Адміністрування",
+    "dashboard": "Панель управління",
+    "toggleMenu": "Переключити меню"
+  },
+  "AdminDashboard": {
+    "defaultError": "Сталася помилка при завантаженні даних",
+    "title": "Панель адміністратора",
+    "description": "Виберіть служителя літератури для детального перегляду його зборів та замовлень.",
+    "noUsers": "Користувачів не знайдено"
   }
 }

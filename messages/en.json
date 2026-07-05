@@ -21,7 +21,8 @@
     "updating": "Updating...",
     "signin": "Sign in with Google",
     "signout": "Sign out",
-    "editing": "Editing"
+    "editing": "Editing",
+    "pcs": "pcs."
   },
   "User": {
     "avatar": "Avatar",
@@ -202,5 +203,30 @@
   "LoginView": {
     "title": "Sign in to system",
     "description": "Manage literature orders."
+  },
+  "AdminUserDetail": {
+    "backToList": "Back to list",
+    "defaultUserAlt": "User",
+    "noName": "No name",
+    "roleSuperadmin": "Administrator",
+    "roleLiterature": "Literature servant",
+    "sectionTitle": "Congregations and orders",
+    "noCongregations": "This literature servant has no congregations created yet.",
+    "congregationTitle": "Congregation: {name}",
+    "noPublishers": "There are no publishers in the congregation",
+    "ordersCount": "Orders: {count}",
+    "noActiveOrders": "No active orders",
+    "noCongregationsList": "No congregations"
+  },
+  "Navigation": {
+    "administration": "Administration",
+    "dashboard": "Dashboard",
+    "toggleMenu": "Toggle menu"
+  },
+  "AdminDashboard": {
+    "defaultError": "An error occurred while loading data",
+    "title": "Admin Dashboard",
+    "description": "Select a literature servant to view their congregation and orders in detail.",
+    "noUsers": "No users found"
   }
 }

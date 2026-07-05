@@ -14,6 +14,7 @@ import { LanguageSwitcher } from "./LanguageSwitcher";
 export const Header = ({ session }: WithSessionProps) => {
   const tUser = useTranslations("User");
   const tLogo = useTranslations("Logo");
+  const tNavigation = useTranslations("Navigation");
 
   const [isOpen, setIsOpen] = useState(false);
   const user = session?.user;
@@ -39,29 +40,21 @@ export const Header = ({ session }: WithSessionProps) => {
         <div className="hidden items-center gap-6 md:flex">
           <LanguageSwitcher />
           {session?.user?.role === "superadmin" && (
-            <>
+            <nav>
               <Link
                 href="/admin"
                 className="px-3 py-2 text-xs font-semibold text-indigo-700 bg-indigo-50 hover:bg-indigo-100 rounded-xl transition-all"
               >
-                Администрирование
+                {tNavigation("administration")}
               </Link>
               <Link
                 href="/dashboard"
                 className="px-3 py-2 text-xs font-semibold text-indigo-700 bg-indigo-50 hover:bg-indigo-100 rounded-xl transition-all"
               >
-                Панель управления
+                {tNavigation("dashboard")}
               </Link>
-            </>
+            </nav>
           )}
-          {/* <nav className="flex items-center gap-4 text-sm font-medium text-gray-600">
-            <Link
-              href="/dashboard"
-              className="hover:text-indigo-600 transition-colors"
-            >
-              Панель управления
-            </Link>
-          </nav> */}
 
           <div className="h-6 w-px bg-gray-200" />
 
@@ -93,7 +86,7 @@ export const Header = ({ session }: WithSessionProps) => {
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="flex h-10 w-10 items-center justify-center rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 md:hidden focus:outline-none"
-          aria-label="Переключить меню"
+          aria-label={tNavigation("toggleMenu")}
         >
           {isOpen ? <CloseIcon /> : <MenuIcon />}
         </button>
@@ -124,17 +117,7 @@ export const Header = ({ session }: WithSessionProps) => {
               </div>
             </div>
 
-            {/* <nav className="flex flex-col gap-2">
-              <Link
-                href="/dashboard"
-                onClick={() => setIsOpen(false)}
-                className="rounded-xl bg-gray-50 p-3 text-sm font-medium text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors"
-              >
-                Панель управления
-              </Link>
-            </nav> */}
-
-            <div className="flex flex-col pt-2 gap-5">
+            <nav className="flex flex-col pt-2 gap-5">
               <LanguageSwitcher />
               {session?.user?.role === "superadmin" && (
                 <>
@@ -142,18 +125,18 @@ export const Header = ({ session }: WithSessionProps) => {
                     href="/admin"
                     className="px-3 py-2 text-xs font-semibold text-indigo-700 bg-indigo-50 hover:bg-indigo-100 rounded-xl transition-all"
                   >
-                    Администрирование
+                    {tNavigation("administration")}
                   </Link>
                   <Link
                     href="/dashboard"
                     className="px-3 py-2 text-xs font-semibold text-indigo-700 bg-indigo-50 hover:bg-indigo-100 rounded-xl transition-all"
                   >
-                    Панель управления
+                    {tNavigation("dashboard")}
                   </Link>
                 </>
               )}
               <SignOutForm />
-            </div>
+            </nav>
           </div>
         </div>
       )}
