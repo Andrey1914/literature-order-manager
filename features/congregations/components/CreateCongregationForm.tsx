@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { useCongregationStore } from "../store";
 import { createCongregationAction } from "../actions";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/buttons";
 import { CreateCongregationFormProps } from "./types";
 
 export const CreateCongregationForm = ({

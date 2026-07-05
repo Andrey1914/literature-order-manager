@@ -1,12 +1,19 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { UserProfileProps } from "./types";
+import { UserRole } from "@/types/next-auth";
+import { WithSessionProps } from "@/types";
 
-export const UserProfile = ({ image, name, role }: UserProfileProps) => {
+export const UserProfile = ({ session }: WithSessionProps) => {
   const tUser = useTranslations("User");
 
+  const user = session?.user;
+  if (!user) return null;
+
+  const currentRole = (user.role || "user") as UserRole;
+  const { image, name } = user;
+
   return (
-    <div className="flex items-center justify-center gap-3 rounded-xl bg-indigo-50 p-4 max-w-sm mx-auto">
+    <div className="flex items-center gap-3">
       {image && (
         <Image
           src={image}
@@ -21,9 +28,9 @@ export const UserProfile = ({ image, name, role }: UserProfileProps) => {
           {tUser("enteredAs")}
         </p>
         <p className="text-base font-semibold text-gray-900">{name}</p>
-        <span className="inline-block mt-0.5 rounded bg-indigo-200 px-1.5 py-0.5 text-xs font-semibold text-indigo-800">
-          {tUser("role")} {role}
-        </span>
+        <p className="text-xs text-gray-500 ">
+          {tUser(`roles.${currentRole}`)}
+        </p>
       </div>
     </div>
   );

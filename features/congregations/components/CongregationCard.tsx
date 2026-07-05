@@ -3,9 +3,8 @@
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { CongregationCardProps } from "./types";
-import { Modal } from "@/components/ui/Modal";
-import { ConfirmModal } from "@/components/ui/ConfirmModal";
-import { CardActions } from "@/components/ui/CardActions";
+import { Modal, ConfirmModal } from "@/components/ui/modals";
+import { CardActions } from "@/components/ui/buttons";
 import { EditCongregationForm } from "./EditCongregationForm";
 import { useCongregationStore } from "../store";
 import { deleteCongregationAction } from "../actions";

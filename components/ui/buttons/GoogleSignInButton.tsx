@@ -1,6 +1,6 @@
 import { useTranslations } from "next-intl";
 import { signIn } from "@/lib/auth";
-import { GoogleIcon } from "./icons/GoogleIcon";
+import { GoogleIcon } from "../icons/GoogleIcon";
 
 export const GoogleSignInButton = () => {
   const t = useTranslations("Common");

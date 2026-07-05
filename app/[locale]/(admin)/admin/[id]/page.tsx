@@ -1,8 +1,8 @@
 import { getAdminDashboardData } from "@/features/admin/actions";
 import { notFound } from "next/navigation";
-import { BackButton } from "@/components/ui/BackButton";
-import { UserHeaderBlock } from "@/components/ui/UserHeaderBlock";
-import { CongregationsSection } from "@/features/admin/components/CongregationsSection";
+import { BackButton } from "@/components/ui/buttons";
+import { UserHeaderBlock } from "@/components/ui";
+import { CongregationsSection } from "@/features/admin/components";
 
 interface Props {
   params: Promise<{ id: string }>;

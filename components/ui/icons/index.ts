@@ -1,0 +1,8 @@
+export { UsersIcon } from "./UsersIcon";
+export { TrashIcon } from "./TrashIcon";
+export { PencilIcon } from "./PencilIcon";
+export { MenuIcon } from "./MenuIcon";
+export { LanguageIcon } from "./LanguageIcon";
+export * from "./FlagIcon";
+export { CloseIcon } from "./CloseIcon";
+export { ArrowLeftIcon } from "./ArrowLeftIcon";

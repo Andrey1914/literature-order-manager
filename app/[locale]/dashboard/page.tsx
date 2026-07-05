@@ -1,6 +1,6 @@
 import { auth } from "@/lib/auth";
 import clientPromise from "@/lib/db";
-import { DashboardView } from "@/views/DashboardView";
+import { DashboardView } from "@/views";
 import { redirect } from "next/navigation";
 
 export default async function DashboardPage() {

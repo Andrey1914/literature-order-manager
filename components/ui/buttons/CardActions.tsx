@@ -1,10 +1,7 @@
-"use client";
-
 import { useTranslations } from "next-intl";
-import { Button } from "./Button";
-import { PencilIcon } from "./icons/PencilIcon";
-import { TrashIcon } from "./icons/TrashIcon";
-import { CardActionsProps } from "./types";
+import { Button } from "@/components/ui/buttons";
+import { PencilIcon, TrashIcon } from "../icons";
+import { CardActionsProps } from "../types";
 
 export const CardActions = ({ onEdit, onDelete }: CardActionsProps) => {
   const t = useTranslations("Common");

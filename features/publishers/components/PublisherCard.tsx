@@ -4,9 +4,8 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { usePublisherStore } from "../store";
 import { deletePublisher } from "../actions";
-import { CardActions } from "@/components/ui/CardActions";
-import { Modal } from "@/components/ui/Modal";
-import { ConfirmModal } from "@/components/ui/ConfirmModal";
+import { CardActions } from "@/components/ui/buttons";
+import { Modal, ConfirmModal } from "@/components/ui/modals";
 import { EditPublisherForm } from "./EditPublisherForm";
 import { PublisherCardProps } from "./types";
 

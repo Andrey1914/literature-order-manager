@@ -1,6 +1,4 @@
-"use client";
-
-import { ButtonProps } from "./types";
+import { ButtonProps } from "../types";
 
 export const Button = ({
   children,

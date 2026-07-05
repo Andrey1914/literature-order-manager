@@ -4,9 +4,11 @@ import { useEffect } from "react";
 import { useCongregationStore } from "@/features/congregations/store";
 import { usePublisherStore } from "@/features/publishers/store";
 import { DashboardViewProps } from "./types";
-import { CongregationsScreen } from "./screens/CongregationsScreen";
-import { CongregationDetailsScreen } from "./screens/CongregationDetailsScreen";
-import { PublisherDetailsScreen } from "./screens/PublisherDetailsScreen";
+import {
+  CongregationDetailsScreen,
+  CongregationsScreen,
+  PublisherDetailsScreen,
+} from "./screens";
 
 export const DashboardView = ({ initialCongregations }: DashboardViewProps) => {
   const { setCongregations, activeCongregationId } = useCongregationStore();

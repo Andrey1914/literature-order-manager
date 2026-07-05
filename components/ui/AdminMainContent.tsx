@@ -1,5 +1,5 @@
 import { useTranslations } from "next-intl";
-import { UserRowCard } from "@/features/admin/components/UserRowCard";
+import { UserRowCard } from "@/features/admin/components";
 import type { UserRowCardProps } from "@/types";
 
 type AdminUser = UserRowCardProps["user"];
@@ -8,7 +8,7 @@ interface AdminMainContentProps {
   users: AdminUser[];
 }
 
-export function AdminMainContent({ users }: AdminMainContentProps) {
+export const AdminMainContent = ({ users }: AdminMainContentProps) => {
   const t = useTranslations("AdminDashboard");
 
   return (
@@ -31,4 +31,4 @@ export function AdminMainContent({ users }: AdminMainContentProps) {
       )}
     </div>
   );
-}
+};
