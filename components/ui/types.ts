@@ -20,6 +20,7 @@ interface BaseModalProps {
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "secondary" | "icon";
+  size?: "sm" | "md" | "lg" | "none";
   isLoading?: boolean;
 }
 

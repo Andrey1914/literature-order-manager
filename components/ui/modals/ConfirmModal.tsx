@@ -1,5 +1,3 @@
-// "use client";
-
 import { useTranslations } from "next-intl";
 import { Modal } from "./Modal";
 import { Button } from "@/components/ui/buttons";
@@ -14,6 +12,18 @@ export const ConfirmModal = ({
   isLoading,
 }: ConfirmModalProps) => {
   const t = useTranslations("Common");
+
+  const handleConfirm = async () => {
+    const delay = (ms: number) =>
+      new Promise((resolve) => setTimeout(resolve, ms));
+
+    try {
+      await Promise.all([onConfirm(), delay(1000)]);
+    } catch (error) {
+      console.error("Ошибка при выполнении действия:", error);
+    }
+  };
+
   return (
     <Modal isOpen={isOpen} onClose={onClose} title={title}>
       <div className="space-y-6">
@@ -29,9 +39,9 @@ export const ConfirmModal = ({
           </Button>
           <Button
             type="button"
-            className="bg-red-600 hover:bg-red-700 focus:ring-red-500"
+            className="bg-red-600 hover:bg-red-700 focus:ring-red-500 text-white w-full sm:w-24 h-10"
             isLoading={isLoading}
-            onClick={onConfirm}
+            onClick={handleConfirm}
           >
             {t("delete")}
           </Button>
