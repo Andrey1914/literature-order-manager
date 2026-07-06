@@ -1,3 +1,5 @@
+"use client";
+
 import { signOut } from "next-auth/react";
 import { useTranslations } from "next-intl";
 import { Button } from "./Button";

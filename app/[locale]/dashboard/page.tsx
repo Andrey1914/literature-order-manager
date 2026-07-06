@@ -1,7 +1,7 @@
 import { auth } from "@/lib/auth";
 import clientPromise from "@/lib/db";
-import { DashboardView } from "@/views";
 import { redirect } from "next/navigation";
+import { DashboardView } from "@/views";
 
 export default async function DashboardPage() {
   const session = await auth();

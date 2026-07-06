@@ -1,22 +1,12 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import { auth } from "@/lib/auth";
-import { Header } from "@/components/ui/Header";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { locales, Locale } from "@/i18n/config";
 import "../globals.css";
-
-const geistSans = Geist({
-  subsets: ["latin"],
-  variable: "--font-sans",
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { geistSans, geistMono } from "@/shared";
+import { Header } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "Менеджер Заказов Литературы",
