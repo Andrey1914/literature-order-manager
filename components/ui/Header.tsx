@@ -60,10 +60,16 @@ export const Header = ({ session }: WithSessionProps) => {
 
         <Button
           onClick={() => setIsOpen(!isOpen)}
-          className="flex h-10 w-10 items-center justify-center rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 md:hidden focus:outline-none"
+          variant="secondary"
+          size="none"
+          className="flex h-10 w-10 items-center justify-center rounded-lg border border-gray-200 text-gray-600 bg-white hover:bg-gray-50 md:hidden"
           aria-label={tNavigation("toggleMenu")}
         >
-          {isOpen ? <CloseIcon /> : <MenuIcon />}
+          {isOpen ? (
+            <CloseIcon className="h-6 w-6" />
+          ) : (
+            <MenuIcon className="h-6 w-6" />
+          )}
         </Button>
       </div>
 

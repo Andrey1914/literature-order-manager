@@ -9,6 +9,7 @@ import {
 import { WarehouseItem } from "./types";
 import { usePublisherStore } from "@/features/publishers/store";
 import { CATEGORY_LABELS } from "@/features/orders/utils";
+import { Button } from "@/components/ui/buttons";
 
 export const CongregationWarehouse = ({
   congregationId,
@@ -21,6 +22,7 @@ export const CongregationWarehouse = ({
   const [items, setItems] = useState<WarehouseItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isPending, setIsPending] = useState(false);
+  const [activeItemKey, setActiveItemKey] = useState<string | null>(null);
 
   const refreshPublishers = usePublisherStore(
     (state) => state.refreshPublishers,
@@ -54,16 +56,21 @@ export const CongregationWarehouse = ({
   }, [congregationId]);
 
   const handleReceive = async (title: string, category: string) => {
+    const itemKey = `${category}-${title}`;
+    setActiveItemKey(itemKey);
     setIsPending(true);
+
+    const delay = (ms: number) =>
+      new Promise((resolve) => setTimeout(resolve, ms));
+
     try {
-      const res = await bulkReceivePublications(
-        congregationId,
-        title,
-        category,
-      );
+      const [res] = await Promise.all([
+        bulkReceivePublications(congregationId, title, category),
+        delay(1000),
+      ]);
+
       if (res.success) {
         await loadWarehouse();
-
         await refreshPublishers(congregationId);
       } else {
         alert(res.error);
@@ -72,6 +79,7 @@ export const CongregationWarehouse = ({
       console.error(error);
     } finally {
       setIsPending(false);
+      setActiveItemKey(null);
     }
   };
 
@@ -97,6 +105,9 @@ export const CongregationWarehouse = ({
         <div className="divide-y divide-gray-50 max-h-96 overflow-y-auto pr-2 space-y-3">
           {items.map((item, idx) => {
             const displayLabel = tCategories(item.category);
+            const currentItemKey = `${item.category}-${item.title}`;
+            const isCurrentLoading =
+              isPending && activeItemKey === currentItemKey;
 
             return (
               <div
@@ -134,16 +145,16 @@ export const CongregationWarehouse = ({
                 </div>
 
                 {item.status === "ORDERED" && (
-                  <button
-                    type="button"
-                    disabled={isPending}
+                  <Button
+                    variant="secondary"
+                    size="none"
+                    isLoading={isCurrentLoading}
+                    disabled={isPending && !isCurrentLoading}
                     onClick={() => handleReceive(item.title, item.category)}
-                    className="px-3 py-1.5 text-xs font-semibold bg-white border border-gray-200 text-gray-700 rounded-xl hover:bg-gray-50 shadow-sm transition-all whitespace-nowrap disabled:opacity-50"
+                    className="w-31.25 h-8 text-xs font-semibold rounded-xl whitespace-nowrap"
                   >
-                    {isPending
-                      ? t("pendingBtn")
-                      : `${t("receiveBtn")} (${item.quantity})`}
-                  </button>
+                    {`${t("receiveBtn")} (${item.quantity})`}
+                  </Button>
                 )}
               </div>
             );
