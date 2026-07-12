@@ -8,7 +8,7 @@ export const AdminErrorBlock = ({ error }: AdminErrorBlockProps) => {
   const t = useTranslations("AdminDashboard");
 
   return (
-    <div className="rounded-xl bg-red-50 p-4 text-sm text-red-600 border border-red-100">
+    <div className="rounded-xl bg-red-50 p-4 text-sm text-red-600 border border-red-100 dark:bg-red-950/20 dark:border-red-900/30 dark:text-red-400">
       {error || t("defaultError")}
     </div>
   );

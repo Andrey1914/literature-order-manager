@@ -84,25 +84,27 @@ export const CongregationWarehouse = ({
   };
 
   if (isLoading && items.length === 0)
-    return <div className="h-32 bg-gray-50 animate-pulse rounded-2xl border" />;
+    return (
+      <div className="h-32 bg-gray-50 dark:bg-slate-900/50 animate-pulse rounded-2xl border border-gray-100 dark:border-slate-800" />
+    );
 
   return (
-    <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-4">
-      <h3 className="text-lg font-bold text-gray-800 border-b pb-2">
+    <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-4 dark:bg-slate-900 dark:border-slate-800 transition-colors">
+      <h3 className="text-lg font-bold text-gray-800 dark:text-white border-b border-gray-100 dark:border-slate-800 pb-2">
         📦 {t("warehouseTitle")}
       </h3>
 
       {items.length === 0 ? (
         <div className="py-8 px-4 text-center">
-          <p className="text-sm font-medium text-gray-500">
+          <p className="text-sm font-medium text-gray-500 dark:text-slate-400">
             {t("emptyStateTitle")}
           </p>
-          <p className="text-xs text-gray-400 mt-1 max-w-60 mx-auto">
+          <p className="text-xs text-gray-400 dark:text-slate-500 mt-1 max-w-60 mx-auto">
             {t("emptyStateDescription")}
           </p>
         </div>
       ) : (
-        <div className="divide-y divide-gray-50 max-h-96 overflow-y-auto pr-2 space-y-3">
+        <div className="divide-y divide-gray-50 dark:divide-slate-800/60 max-h-96 overflow-y-auto pr-2 space-y-3">
           {items.map((item, idx) => {
             const displayLabel = tCategories(item.category);
             const currentItemKey = `${item.category}-${item.title}`;
@@ -122,10 +124,10 @@ export const CongregationWarehouse = ({
                       {displayLabel}
                     </span>
                     <span
-                      className={`text-[11px] px-1.5 py-0.5 rounded font-semibold ${
+                      className={`text-[11px] px-1.5 py-0.5 rounded font-semibold transition-colors ${
                         item.status === "ORDERED"
-                          ? "bg-amber-50 text-amber-700"
-                          : "bg-indigo-50 text-indigo-700 animate-pulse"
+                          ? "bg-amber-50 text-amber-700 dark:bg-amber-500/10 dark:text-amber-400"
+                          : "bg-indigo-50 text-indigo-700 animate-pulse dark:bg-indigo-500/10 dark:text-indigo-400"
                       }`}
                     >
                       {item.status === "ORDERED"
@@ -133,12 +135,12 @@ export const CongregationWarehouse = ({
                         : t("statusInStock")}
                     </span>
                   </div>
-                  <h4 className="font-bold text-gray-800 text-sm mt-1">
+                  <h4 className="font-bold text-gray-800 dark:text-slate-200 text-sm mt-1 truncate">
                     {item.title}
                   </h4>
-                  <p className="text-xs text-gray-500">
+                  <p className="text-xs text-gray-500 dark:text-slate-400">
                     {t("totalQuantity")}{" "}
-                    <span className="font-bold text-gray-700">
+                    <span className="font-bold text-gray-700 dark:text-slate-300">
                       {item.quantity} {t("pcs")}
                     </span>
                   </p>

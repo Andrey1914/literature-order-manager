@@ -12,7 +12,7 @@ export const CardActions = ({ onEdit, onDelete }: CardActionsProps) => {
         variant="icon"
         onClick={onEdit}
         title={t("editing")}
-        className="bg-white border-gray-200! shadow-sm text-gray-700 hover:text-indigo-600"
+        className="bg-white border-gray-200! shadow-sm text-gray-700 hover:text-indigo-600 dark:bg-slate-800 dark:border-slate-700! dark:text-slate-300 dark:hover:text-indigo-400"
       >
         <PencilIcon className="h-4 w-4" />
       </Button>
@@ -22,7 +22,7 @@ export const CardActions = ({ onEdit, onDelete }: CardActionsProps) => {
         variant="icon"
         onClick={onDelete}
         title={t("delete")}
-        className="bg-white border-gray-200! shadow-sm text-gray-700 hover:text-red-600"
+        className="bg-white border-gray-200! shadow-sm text-gray-700 hover:text-red-600 dark:bg-slate-800 dark:border-slate-700! dark:text-slate-300 dark:hover:text-red-400"
       >
         <TrashIcon className="h-4 w-4" />
       </Button>

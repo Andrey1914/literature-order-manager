@@ -42,21 +42,21 @@ export const PublisherCard = ({ publisher }: PublisherCardProps) => {
     <>
       <div
         onClick={() => setActivePublisher(publisher.id)}
-        className="group cursor-pointer rounded-2xl border p-6 shadow-sm transition-all hover:shadow-md bg-white hover:border-indigo-400/40"
+        className="group cursor-pointer rounded-2xl border p-6 shadow-sm transition-all hover:shadow-md bg-white border-gray-200 hover:border-indigo-400/40 dark:bg-slate-900 dark:border-slate-800 dark:hover:border-indigo-500/30"
       >
         <div className="flex items-start justify-between gap-4 w-full">
           <div className="min-w-0 flex-1">
-            <h4 className="font-bold text-gray-800 group-hover:text-indigo-700 transition-colors wrap-break-word">
+            <h4 className="font-bold text-gray-800 group-hover:text-indigo-700 transition-colors wrap-break-word dark:text-slate-100 dark:group-hover:text-indigo-400">
               {publisher.name}
 
               {publisher.pendingCount && publisher.pendingCount > 0 ? (
-                <span className="ml-2 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-indigo-600 px-1.5 text-xs font-bold text-white ring-2 ring-white animate-pulse">
+                <span className="ml-2 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-indigo-600 px-1.5 text-xs font-bold text-white ring-2 ring-white animate-pulse dark:ring-slate-900">
                   {publisher.pendingCount}
                 </span>
               ) : null}
             </h4>
             {publisher.lastName && (
-              <p className="font-bold text-gray-500 mt-1.5 flex items-center gap-1 wrap-break-word">
+              <p className="font-bold text-gray-500 mt-1.5 flex items-center gap-1 wrap-break-word dark:text-slate-400">
                 {publisher.lastName}
               </p>
             )}
@@ -89,7 +89,7 @@ export const PublisherCard = ({ publisher }: PublisherCardProps) => {
         isLoading={isDeletePending}
         title={t("deleteModalTitle")}
         message={t("deleteConfirmMessage", {
-          name: publisher.name,
+          name: publisher.name || "",
           lastName: publisher.lastName || "",
         })}
       />

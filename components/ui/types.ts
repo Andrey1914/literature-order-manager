@@ -48,3 +48,10 @@ export interface ConfirmModalProps extends BaseModalProps {
   message: string;
   isLoading?: boolean;
 }
+
+export interface ThemeProviderProps {
+  children: React.ReactNode;
+  attribute?: "class";
+  defaultTheme?: "system" | "dark" | "light";
+  enableSystem?: boolean;
+}

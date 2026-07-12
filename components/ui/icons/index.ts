@@ -6,3 +6,4 @@ export { LanguageIcon } from "./LanguageIcon";
 export * from "./FlagIcon";
 export { CloseIcon } from "./CloseIcon";
 export { ArrowLeftIcon } from "./ArrowLeftIcon";
+export { StarsIcon, CloudIcon, MoonIcon, SunIcon } from "./toggle-icons";

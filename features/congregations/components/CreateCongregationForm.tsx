@@ -44,7 +44,7 @@ export const CreateCongregationForm = ({
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
-        <label className="block text-sm font-semibold text-gray-700 mb-1">
+        <label className="block text-sm font-semibold text-gray-700 dark:text-slate-300 mb-1">
           {tForm("nameLabel")} <span className="text-red-500">*</span>
         </label>
         <input
@@ -53,14 +53,14 @@ export const CreateCongregationForm = ({
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder={t("namePlaceholder")}
-          className="w-full rounded-xl border border-gray-300 p-3 text-sm text-gray-900 placeholder:text-gray-500 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+          className="w-full rounded-xl border border-gray-300 p-3 text-sm text-gray-900 placeholder:text-gray-500 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 dark:bg-slate-950 dark:border-slate-800 dark:text-white dark:placeholder:text-slate-500 dark:focus:border-indigo-500 dark:focus:ring-indigo-500 transition-colors"
         />
       </div>
 
       <div>
-        <label className="block text-sm font-semibold text-gray-700 mb-1">
+        <label className="block text-sm font-semibold text-gray-700 dark:text-slate-300 mb-1">
           {tForm("countryLabel")}{" "}
-          <span className="text-gray-400 font-normal">
+          <span className="text-gray-400 font-normal dark:text-slate-500">
             ({tForm("optional")})
           </span>
         </label>
@@ -69,7 +69,7 @@ export const CreateCongregationForm = ({
           value={country}
           onChange={(e) => setCountry(e.target.value)}
           placeholder={t("countryPlaceholder")}
-          className="w-full rounded-xl border border-gray-300 p-3 text-sm text-gray-900 placeholder:text-gray-500 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+          className="w-full rounded-xl border border-gray-300 p-3 text-sm text-gray-900 placeholder:text-gray-500 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 dark:bg-slate-950 dark:border-slate-800 dark:text-white dark:placeholder:text-slate-500 dark:focus:border-indigo-500 dark:focus:ring-indigo-500 transition-colors"
         />
       </div>
 
