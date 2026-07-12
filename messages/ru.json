@@ -102,6 +102,8 @@
   "EditPublisherForm": {
     "firstNameLabel": "Имя",
     "lastNameLabel": "Фамилия",
+    "firstNamePlaceholder": "Иван",
+    "lastNamePlaceholder": "Иванов",
     "submitButton": "Сохранить изменения",
     "loadingButton": "Сохранение...",
     "errors": {

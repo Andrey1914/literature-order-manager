@@ -97,20 +97,20 @@ export const PublisherDetailsScreen = () => {
         <span>{t("backToButton")}</span>
       </Button>
 
-      <div className="border-b border-gray-200 pb-6">
-        <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+      <div className="border-b border-gray-200 pb-6 dark:border-slate-800">
+        <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl dark:text-slate-100">
           <span>{t("firstNameLabel")}</span> {name}
         </h1>
-        <p className="mt-2 text-md text-gray-500 flex items-center gap-1">
+        <p className="mt-2 text-md text-gray-500 flex items-center gap-1 dark:text-slate-400">
           <span>{t("lastNameLabel")}</span> {lastName ?? t("noLastName")}
         </p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-6">
-          <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-4">
+          <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-4 dark:bg-slate-900/50 dark:border-slate-800">
             <div className="flex items-center justify-between">
-              <h3 className="text-xl font-bold text-gray-800">
+              <h3 className="text-xl font-bold text-gray-800 dark:text-slate-200">
                 {t("ordersTitle")}
               </h3>
               <Button onClick={() => setIsOrderModalOpen(true)}>
@@ -118,13 +118,13 @@ export const PublisherDetailsScreen = () => {
               </Button>
             </div>
 
-            <div className="flex border-b border-gray-100 gap-4 pt-2">
+            <div className="flex border-b border-gray-100 gap-4 pt-2 dark:border-slate-800">
               <button
                 onClick={() => setActiveTab("SPECIAL")}
                 className={`pb-2.5 text-sm font-semibold transition-colors border-b-2 px-1 ${
                   activeTab === "SPECIAL"
-                    ? "border-indigo-600 text-indigo-600"
-                    : "border-transparent text-gray-400 hover:text-gray-600"
+                    ? "border-indigo-600 text-indigo-600 dark:border-indigo-400 dark:text-indigo-400"
+                    : "border-transparent text-gray-400 hover:text-gray-600 dark:text-slate-500 dark:hover:text-slate-400"
                 }`}
               >
                 {t("specialOrdersTab", { count: activeSpecial.length })}
@@ -133,8 +133,8 @@ export const PublisherDetailsScreen = () => {
                 onClick={() => setActiveTab("REGULAR")}
                 className={`pb-2.5 text-sm font-semibold transition-colors border-b-2 px-1 ${
                   activeTab === "REGULAR"
-                    ? "border-indigo-600 text-indigo-600"
-                    : "border-transparent text-gray-400 hover:text-gray-600"
+                    ? "border-indigo-600 text-indigo-600 dark:border-indigo-400 dark:text-indigo-400"
+                    : "border-transparent text-gray-400 hover:text-gray-600 dark:text-slate-500 dark:hover:text-slate-400"
                 }`}
               >
                 {t("regularOrdersTab", { count: activeRegular.length })}
@@ -144,12 +144,12 @@ export const PublisherDetailsScreen = () => {
 
           {isLoading ? (
             <div className="space-y-3">
-              <div className="h-20 bg-gray-50 animate-pulse rounded-xl border border-gray-100" />
-              <div className="h-20 bg-gray-50 animate-pulse rounded-xl border border-gray-100" />
+              <div className="h-20 bg-gray-50 animate-pulse rounded-xl border border-gray-100 dark:bg-slate-800/40 dark:border-slate-800/50" />
+              <div className="h-20 bg-gray-50 animate-pulse rounded-xl border border-gray-100 dark:bg-slate-800/40 dark:border-slate-800/50" />
             </div>
           ) : activeTab === "SPECIAL" ? (
             activeSpecial.length === 0 ? (
-              <div className="bg-white p-12 rounded-2xl shadow-sm border border-gray-100 text-center text-gray-400 text-sm">
+              <div className="bg-white p-12 rounded-2xl shadow-sm border border-gray-100 text-center text-gray-400 text-sm dark:bg-slate-900/40 dark:border-slate-800 dark:text-slate-500">
                 {t("noSpecialOrders")}
               </div>
             ) : (
@@ -160,7 +160,7 @@ export const PublisherDetailsScreen = () => {
               </div>
             )
           ) : activeRegular.length === 0 ? (
-            <div className="bg-white p-12 rounded-2xl shadow-sm border border-gray-100 text-center text-gray-400 text-sm">
+            <div className="bg-white p-12 rounded-2xl shadow-sm border border-gray-100 text-center text-gray-400 text-sm dark:bg-slate-900/40 dark:border-slate-800 dark:text-slate-500">
               {t("noRegularOrders")}
             </div>
           ) : (
@@ -173,10 +173,10 @@ export const PublisherDetailsScreen = () => {
 
           {activeTab === "SPECIAL" && historySpecial.length > 0 && (
             <div className="pt-4 space-y-3">
-              <h4 className="text-xs text-gray-400 font-bold uppercase tracking-wider px-1">
+              <h4 className="text-xs text-gray-400 font-bold uppercase tracking-wider px-1 dark:text-slate-500">
                 {t("historyTitle", { count: historySpecial.length })}
               </h4>
-              <div className="space-y-3 opacity-75">
+              <div className="space-y-3">
                 {historySpecial.map((order) => (
                   <OrderCard key={order.id} order={order} isRegular={false} />
                 ))}

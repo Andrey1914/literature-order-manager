@@ -21,7 +21,7 @@ export const DashboardView = ({ initialCongregations }: DashboardViewProps) => {
   }, [initialCongregations, setCongregations]);
 
   return (
-    <main className="flex-1 bg-gray-50 p-6 md:p-10">
+    <main className="flex-1 bg-gray-50 p-6 md:p-10 transition-colors dark:bg-slate-950">
       <div className="max-w-7xl mx-auto">
         {!activeCongregationId ? (
           <CongregationsScreen />

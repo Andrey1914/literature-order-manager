@@ -15,8 +15,11 @@ export const EditPublisherForm = ({
   const updatePublisherState = usePublisherStore(
     (state) => state.updatePublisherState,
   );
-  const [name, setName] = useState(publisher.name);
-  const [lastName, setLastName] = useState(publisher.lastName || "");
+  // const [name, setName] = useState(publisher.name);
+  // const [name, setName] = useState(publisher.name || "");
+  // const [lastName, setLastName] = useState(publisher.lastName || "");
+  const [name, setName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [isPending, setIsPending] = useState(false);
 
@@ -36,7 +39,7 @@ export const EditPublisherForm = ({
         name: name.trim(),
         lastName: lastName.trim(),
       });
-
+      console.log(result);
       if (result.error) {
         setError(result.error);
       } else if (result.success) {
@@ -57,7 +60,7 @@ export const EditPublisherForm = ({
   return (
     <form onSubmit={handleSubmit} className="space-y-4 pt-2">
       {error && (
-        <div className="p-3 text-sm bg-red-50 text-red-600 rounded-xl border border-red-100">
+        <div className="p-3 text-sm bg-red-50 text-red-600 rounded-xl border border-red-100 dark:bg-red-500/10 dark:text-red-400 dark:border-red-900/30">
           {error}
         </div>
       )}
@@ -65,37 +68,41 @@ export const EditPublisherForm = ({
       <div className="space-y-1.5">
         <label
           htmlFor="edit-name"
-          className="text-sm font-semibold text-gray-700"
+          className="text-sm font-semibold text-gray-700 dark:text-slate-300"
         >
           {t("firstNameLabel")} <span className="text-red-500">*</span>
         </label>
         <input
           id="edit-name"
           type="text"
+          autoComplete="off"
           required
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500"
+          placeholder={t("firstNamePlaceholder") || ""}
+          className="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 dark:bg-slate-950 dark:border-slate-600 dark:text-slate-300 dark:placeholder:text-slate-500 dark:focus:ring-indigo-500/20 transition-colors"
         />
       </div>
 
       <div className="space-y-1.5">
         <label
           htmlFor="edit-last-name"
-          className="text-sm font-semibold text-gray-700"
+          className="text-sm font-semibold text-gray-700 dark:text-slate-300"
         >
           {t("lastNameLabel")}
         </label>
         <input
           id="edit-last-name"
           type="text"
+          autoComplete="off"
           value={lastName}
           onChange={(e) => setLastName(e.target.value)}
-          className="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500"
+          placeholder={t("lastNamePlaceholder") || ""}
+          className="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 dark:bg-slate-950 dark:border-slate-600 dark:text-slate-300 dark:placeholder:text-slate-500 dark:focus:ring-indigo-500/20 transition-colors"
         />
       </div>
 
-      <div className="flex justify-end gap-3 pt-4 border-t border-gray-100">
+      <div className="flex justify-end gap-3 pt-4 border-t border-gray-100 dark:border-slate-800">
         <Button type="submit" disabled={isPending} className="w-full sm:w-auto">
           {isPending ? t("loadingButton") : t("submitButton")}
         </Button>

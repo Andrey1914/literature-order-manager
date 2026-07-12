@@ -5,3 +5,4 @@ export { LanguageSwitcher } from "./LanguageSwitcher";
 export { UserHeaderBlock } from "./UserHeaderBlock";
 export { UserProfile } from "./UserProfile";
 export { Spinner } from "./Spinner";
+export { ThemeProvider } from "./ThemeProvider";

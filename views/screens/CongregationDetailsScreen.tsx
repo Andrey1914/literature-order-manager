@@ -72,17 +72,19 @@ export const CongregationDetailsScreen = () => {
         <span>{t("backToButton")}</span>
       </Button>
 
-      <div className="border-b border-gray-200 pb-6">
-        <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+      <div className="border-b border-gray-200 pb-6 dark:border-slate-800">
+        <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl dark:text-slate-100">
           {t("title", { name })}
         </h1>
-        <p className="mt-2 text-lg text-gray-600">{t("description")}</p>
+        <p className="mt-2 text-lg text-gray-600 dark:text-slate-400">
+          {t("description")}
+        </p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-6 order-2 lg:order-1">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-            <h3 className="text-xl font-bold text-gray-800">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-2xl shadow-sm border border-gray-100 dark:bg-slate-900 dark:border-slate-900/50">
+            <h3 className="text-xl font-bold text-gray-800 dark:text-slate-200">
               {t("publishersTitle")}
             </h3>
             <div className="w-full sm:w-auto">

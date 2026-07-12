@@ -28,14 +28,14 @@ export const EditOrderModal = ({
     <Modal isOpen={isOpen} onClose={onClose} title={t("title")}>
       <form onSubmit={handleSubmit} className="space-y-5">
         <div className="space-y-1.5">
-          <label className="text-sm font-medium text-gray-700">
+          <label className="text-sm font-medium text-gray-700 dark:text-slate-300">
             {t("quantityLabel")}
           </label>
           <input
             type="number"
             value={quantity}
             onChange={(e) => setQuantity(Number(e.target.value))}
-            className="w-full text-sm p-2.5 bg-white border border-gray-300 text-gray-900 placeholder:text-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+            className="w-full text-sm p-2.5 bg-white border border-gray-300 text-gray-900 placeholder:text-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 dark:bg-slate-950 dark:border-slate-800 dark:text-white dark:placeholder:text-slate-600 dark:focus:ring-indigo-500/20 transition-colors"
             min="1"
             disabled={isLoading}
             required

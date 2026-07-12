@@ -12,7 +12,7 @@ export const PublisherList = () => {
         {[1, 2, 4].map((n) => (
           <div
             key={n}
-            className="h-20 bg-gray-100 animate-pulse rounded-2xl border border-gray-200/60"
+            className="h-20 bg-gray-100 animate-pulse rounded-2xl border border-gray-200/60 dark:bg-slate-800/60 dark:border-slate-700/40"
           />
         ))}
       </div>
@@ -21,7 +21,7 @@ export const PublisherList = () => {
 
   if (publishers.length === 0) {
     return (
-      <div className="bg-white p-12 rounded-2xl shadow-sm border border-gray-100 text-center text-gray-400 text-sm">
+      <div className="bg-white p-12 rounded-2xl shadow-sm border border-gray-100 text-center text-gray-400 text-sm dark:bg-slate-900 dark:border-slate-800 dark:text-slate-400">
         {t("emptyState")}
       </div>
     );

@@ -38,7 +38,8 @@ export const OrderCard = ({ order, isRegular }: OrderCardProps) => {
   const currentStatus = order.status;
 
   const statusStyle =
-    STATUS_CONFIG[currentStatus]?.className || "bg-gray-100 text-gray-600";
+    STATUS_CONFIG[currentStatus]?.className ||
+    "bg-gray-100 text-gray-600 dark:bg-slate-800 dark:text-slate-400";
   const categoryStyle =
     CATEGORY_LABELS[order.category]?.className || CATEGORY_LABELS;
 
@@ -98,9 +99,8 @@ export const OrderCard = ({ order, isRegular }: OrderCardProps) => {
     }
     setIsSubmitting(false);
   };
-
   return (
-    <div className="bg-white p-4 rounded-xl border border-gray-100 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:shadow-md transition-shadow relative group hover:border-indigo-400/40">
+    <div className="bg-white p-4 rounded-xl border border-gray-100 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:shadow-md transition-shadow relative group hover:border-indigo-400/40 dark:bg-slate-900/90 dark:border-slate-800 dark:hover:border-indigo-500/30">
       <div className="space-y-2">
         <div className="flex items-center gap-2 flex-wrap">
           <span
@@ -114,27 +114,27 @@ export const OrderCard = ({ order, isRegular }: OrderCardProps) => {
             {t(`statuses.${order.status}`)}
           </span>
           {isRegular && (
-            <span className="px-2 py-0.5 text-[10px] bg-gray-50 text-gray-400 font-mono rounded-md border border-gray-200/60">
+            <span className="px-2 py-0.5 text-[10px] bg-gray-50 text-gray-400 font-mono rounded-md border border-gray-200/60 dark:bg-slate-950 dark:border-slate-800 dark:text-slate-500">
               {t("monthly")}
             </span>
           )}
         </div>
 
         <div>
-          <h4 className="font-bold text-gray-800 text-base leading-tight">
+          <h4 className="font-bold text-gray-800 text-base leading-tight dark:text-slate-100">
             {order.title}
           </h4>
-          <p className="text-xs text-gray-500 mt-0.5">
+          <p className="text-xs text-gray-500 dark:text-slate-300 mt-0.5">
             {t("quantityLabel")}{" "}
-            <span className="font-semibold text-gray-700">
+            <span className="font-semibold text-gray-700 dark:text-slate-300">
               {t("quantity", { count: order.quantity })}
             </span>
           </p>
         </div>
 
         {hasHistory && (
-          <div className="pt-1.5 border-t border-gray-50/80">
-            <p className="text-[10px] text-gray-400 font-bold uppercase tracking-wider mb-1">
+          <div className="pt-1.5 border-t border-gray-50/80 dark:border-slate-800">
+            <p className="text-[10px] text-gray-400 dark:text-slate-300 font-bold uppercase tracking-wider mb-1">
               {isRegular ? t("lastDeliveries") : t("issued")}
             </p>
             <div className="flex flex-wrap gap-1">
@@ -152,7 +152,7 @@ export const OrderCard = ({ order, isRegular }: OrderCardProps) => {
                 return (
                   <span
                     key={idx}
-                    className="text-[11px] bg-emerald-50/60 border border-emerald-100/70 text-emerald-700 px-1.5 py-0.5 rounded-md font-medium"
+                    className="text-[11px] bg-emerald-50/60 border border-emerald-100/70 text-emerald-700 px-1.5 py-0.5 rounded-md font-medium dark:bg-emerald-950/40 dark:border-emerald-900/30 dark:text-emerald-400"
                   >
                     {systemFormattedDate
                       ? systemFormattedDate
@@ -173,8 +173,8 @@ export const OrderCard = ({ order, isRegular }: OrderCardProps) => {
             onClick={handleStatusChange}
             className={`flex-1 sm:flex-initial flex items-center justify-center px-4 py-2 text-xs font-semibold rounded-xl border transition-all shadow-sm ${
               currentStatus === "ORDERED"
-                ? "bg-white border-gray-200 text-gray-700 hover:bg-gray-50 active:bg-gray-100"
-                : "bg-indigo-600 border-transparent text-white hover:bg-indigo-700 active:bg-indigo-800 shadow-indigo-500/10"
+                ? "bg-white border-gray-200 text-gray-700 hover:bg-gray-50 active:bg-gray-100 dark:bg-slate-950 dark:border-slate-800 dark:text-slate-300 dark:hover:bg-slate-900"
+                : "bg-indigo-600 border-transparent text-white hover:bg-indigo-700 active:bg-indigo-800 shadow-indigo-500/10 dark:bg-indigo-600 dark:hover:bg-indigo-500"
             } disabled:opacity-50 disabled:cursor-not-allowed`}
           >
             {isPending
