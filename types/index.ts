@@ -1,4 +1,4 @@
-export type { UserRole } from "./next-auth";
+export type { UserRole, UserStatus } from "./next-auth";
 export type {
   WithSessionProps,
   Congregation,

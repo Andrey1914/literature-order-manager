@@ -1,5 +1,5 @@
 import { DbSpecialOrder, DbRegularSubscription } from "@/features/orders/types";
-import { UserRole } from "@/types";
+import { UserRole, UserStatus } from "@/types";
 
 import { Session } from "next-auth";
 
@@ -14,6 +14,7 @@ export interface UserRowCardProps {
     email: string | null;
     image: string | null;
     role: UserRole;
+    status?: UserStatus;
     congregations: Array<{ name: string }>;
   };
 }

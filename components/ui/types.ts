@@ -16,6 +16,7 @@ interface BaseModalProps {
   isOpen: boolean;
   onClose: () => void;
   title: string;
+  className?: string;
 }
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {

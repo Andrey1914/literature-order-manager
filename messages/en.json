@@ -22,7 +22,9 @@
     "signin": "Sign in with Google",
     "signout": "Sign out",
     "editing": "Editing",
-    "pcs": "pcs."
+    "pcs": "pcs.",
+    "confirm": "Confirm",
+    "restore": "Restore"
   },
   "User": {
     "avatar": "Avatar",
@@ -31,7 +33,8 @@
     "roles": {
       "user": "Literature Servant",
       "superadmin": "Administrator"
-    }
+    },
+    "settings": "Delete profile"
   },
   "Logo": {
     "logo": "Literature <colored>Manager</colored>"
@@ -228,5 +231,41 @@
     "title": "Admin Dashboard",
     "description": "Select a literature servant to view their congregation and orders in detail.",
     "noUsers": "No users found"
+  },
+  "DeactivatedModal": {
+    "title": "Profile Deactivated",
+    "description": "Your literature servant profile was previously deleted. Would you like to send a request to the administrators to restore it?",
+    "accountLabel": "Account: {email}",
+    "btnSubmit": "Send Request"
+  },
+  "PendingRestoreModal": {
+    "title": "Request Pending",
+    "description": "Your profile restoration request is already being reviewed by the administrator. Please wait for confirmation.",
+    "btnUnderstand": "Understood"
+  },
+  "SettingsModal": {
+    "title": "Delete Profile",
+    "dangerZone": "Danger Zone",
+    "dangerDesc": "Deleting your profile will remove your literature servant account from the order control system, and all current sessions will be terminated.",
+    "infoDesc": "You can restore your literature servant account by submitting a profile restoration request. This process may take some time.",
+    "btnDelete": "Delete Profile"
+  },
+  "SuccessDeleteModal": {
+    "title": "Profile Deleted",
+    "description": "Your profile has been successfully removed from the active list. You will be automatically redirected to the main page..."
+  },
+  "SuccessRestoreModal": {
+    "title": "Request Sent",
+    "description": "The account restoration request has been successfully sent. The administrator has been notified. As soon as they approve the request, you will be able to log in.",
+    "btnOk": "Great!"
+  },
+  "ProfileDeleteFlow": {
+    "confirmTitle": "Delete Profile",
+    "confirmMessage": "Warning! All your personal data will be hidden. However, you can send a profile restoration request at any time during your next login attempt."
+  },
+  "STATUS_CONFIG": {
+    "deactivated": "Deactivated",
+    "pending_restore": "Pending Restore",
+    "active": "Active"
   }
 }
