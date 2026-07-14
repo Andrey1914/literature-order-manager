@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { GoogleSignInButton } from "@/components/ui/buttons/GoogleSignInButton";
+import { LoginRestoreFlow } from "@/components/ui";
 
 export const LoginView = () => {
   const t = useTranslations("LoginView");
@@ -20,6 +21,8 @@ export const LoginView = () => {
 
         <GoogleSignInButton />
       </div>
+
+      <LoginRestoreFlow />
     </div>
   );
 };
