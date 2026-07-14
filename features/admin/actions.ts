@@ -8,6 +8,7 @@ import {
   AdminUserAggregationResult,
   AdminDashboardUser,
 } from "./types";
+import { UserStatus } from "@/types";
 
 type SerializedSpecialOrder = Omit<
   AdminDashboardUser["congregations"][number]["publishers"][number]["specialOrders"][number],
@@ -90,7 +91,8 @@ export async function getAdminDashboardData(): Promise<AdminDashboardResponse> {
       name: user.name,
       email: user.email,
       image: user.image,
-      status: user.status || "active",
+      // status: user.status || "active",
+      status: user.status as UserStatus,
       role: user.role || "user",
       congregations: user.congregations.map((cong) => ({
         id: cong._id.toString(),
@@ -154,8 +156,6 @@ export async function getAdminDashboardData(): Promise<AdminDashboardResponse> {
   }
 }
 
-//-----------------------------------------------------
-
 export async function deactivateOwnProfile(): Promise<{
   success?: boolean;
   error?: string;
@@ -201,7 +201,6 @@ export async function requestProfileRestoration(
       return { error: "Профиль с таким Email не найден" };
     }
 
-    // 2. Явная проверка: если запрос уже был отправлен ранее
     if (user.status === "pending_restore") {
       return {
         error:
@@ -209,17 +208,10 @@ export async function requestProfileRestoration(
       };
     }
 
-    // 3. Дополнительная проверка на случай, если профиль уже активен
     if (user.status === "active") {
       return { error: "Этот профиль уже активен в системе" };
     }
 
-    // const result = await db
-    //   .collection("users")
-    //   .updateOne(
-    //     { email: email, status: "deactivated" },
-    //     { $set: { status: "pending_restore", requestedRestoreAt: new Date() } },
-    //   );
     const result = await db
       .collection("users")
       .updateOne(
@@ -270,8 +262,6 @@ export async function restoreUserProfile(
     return { error: "Не удалось восстановить профиль" };
   }
 }
-
-//-------------------------------------------------------
 
 export async function rejectProfileRestoration(
   targetUserId: string,
