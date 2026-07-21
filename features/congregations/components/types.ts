@@ -19,6 +19,7 @@ export interface CongregationCardProps {
 export interface WarehouseItem {
   title: string;
   category: string;
+  language?: string;
   status: "ORDERED" | "EXPECTED";
   quantity: number;
   type: "SPECIAL" | "REGULAR";

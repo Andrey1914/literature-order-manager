@@ -7,6 +7,7 @@ import { useOrderStore } from "../store";
 import { createSpecialOrder, createRegularSubscription } from "../actions";
 import { CreateOrderFormProps } from "./types";
 import { CATEGORIES } from "@/features/constants";
+import { LanguageSelect } from "@/components/ui";
 
 export const CreateOrderForm = ({
   publisherId,
@@ -20,6 +21,7 @@ export const CreateOrderForm = ({
   const [category, setCategory] = useState("BOOK");
   const [title, setTitle] = useState("");
   const [quantity, setQuantity] = useState(1);
+  const [language, setLanguage] = useState("");
   const [isPending, setIsPending] = useState(false);
 
   const currentType =
@@ -28,6 +30,7 @@ export const CreateOrderForm = ({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!title.trim() || quantity < 1) return;
+    // if (!title.trim() || quantity < 1 || !language.trim()) return;
 
     setIsPending(true);
 
@@ -38,6 +41,7 @@ export const CreateOrderForm = ({
           category: category as "MAGAZINE" | "WORKBOOK",
           title,
           quantity,
+          language,
         });
 
         if (result.success && result.id) {
@@ -47,6 +51,7 @@ export const CreateOrderForm = ({
             category: category as "MAGAZINE" | "WORKBOOK",
             title,
             quantity,
+            language,
             status: "ORDERED",
             isActive: true,
           });
@@ -58,6 +63,7 @@ export const CreateOrderForm = ({
           category: category as "BOOK" | "BROCHURE" | "CD" | "ANNUAL_EDITION",
           title,
           quantity,
+          language,
         });
 
         if (result.success && result.id) {
@@ -67,6 +73,7 @@ export const CreateOrderForm = ({
             category: category as "BOOK" | "BROCHURE" | "CD" | "ANNUAL_EDITION",
             title,
             quantity,
+            language,
             status: "ORDERED",
           });
           onSuccess();
@@ -140,6 +147,32 @@ export const CreateOrderForm = ({
           onChange={(e) => setQuantity(Number(e.target.value))}
           className="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm text-gray-900 focus:outline-none focus:border-indigo-500 dark:bg-slate-950 dark:border-slate-800 dark:text-white dark:focus:border-indigo-500 transition-colors"
         />
+      </div>
+
+      <div className="grid grid-cols-2 gap-3">
+        <div className="space-y-1.5">
+          <label
+            htmlFor="language"
+            className="text-sm font-semibold text-gray-700 dark:text-slate-300"
+          >
+            Язык
+          </label>
+          <LanguageSelect
+            value={language}
+            onChange={setLanguage}
+            placeholder="Выбрать язык"
+            disabled={isPending}
+          />
+          {/* <input
+            id="language"
+            type="text"
+            required
+            value={language}
+            onChange={(e) => setLanguage(e.target.value)}
+            placeholder="mk, en..."
+            className="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm text-gray-900 focus:outline-none focus:border-indigo-500 dark:bg-slate-950 dark:border-slate-800 dark:text-white dark:focus:border-indigo-500 transition-colors uppercase"
+          /> */}
+        </div>
       </div>
 
       <div className="flex justify-end gap-3 pt-4 border-t border-gray-100 dark:border-slate-800">

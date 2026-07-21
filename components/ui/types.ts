@@ -56,3 +56,17 @@ export interface ThemeProviderProps {
   defaultTheme?: "system" | "dark" | "light";
   enableSystem?: boolean;
 }
+
+export interface LanguageSelectProps {
+  value: string;
+  onChange: (value: string) => void;
+  placeholder?: string;
+  disabled?: boolean;
+}
+
+export interface LanguageListModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  value: string;
+  onSelect: (code: string) => void;
+}

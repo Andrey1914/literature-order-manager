@@ -9,3 +9,4 @@ export { ArrowLeftIcon } from "./ArrowLeftIcon";
 export { StarsIcon, CloudIcon, MoonIcon, SunIcon } from "./toggle-icons";
 export { SettingsIcon } from "./SettingsIcon";
 export { SuccessCircleIcon } from "./SuccessCircleIcon";
+export { PublisherIcon } from "./PublisherIcon";

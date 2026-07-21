@@ -5,3 +5,4 @@ export { SuccessDeleteModal } from "./SuccessDeleteModal";
 export { DeactivatedModal } from "./DeactivatedModal";
 export { PendingRestoreModal } from "./PendingRestoreModal";
 export { SuccessRestoreModal } from "./SuccessRestoreModal";
+export { LanguageListModal } from "./LanguageListModal";

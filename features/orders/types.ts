@@ -5,6 +5,7 @@ interface BaseOrderFields<TCategory, TStatus> {
   title: string;
   quantity: number;
   status: TStatus;
+  language?: string;
 }
 
 interface BaseClientOrder<TCategory, TStatus> extends BaseOrderFields<
@@ -32,6 +33,7 @@ interface BaseCreateArgs<TCategory> {
   category: TCategory;
   title: string;
   quantity: number;
+  language?: string;
 }
 
 export type SpecialCategory = "BOOK" | "BROCHURE" | "CD" | "ANNUAL_EDITION";
@@ -85,6 +87,7 @@ export interface OrderState {
     isRegular: boolean,
     title: string,
     quantity: number,
+    language?: string,
   ) => void;
   setIsLoading: (isLoading: boolean) => void;
 }

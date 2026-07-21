@@ -10,6 +10,7 @@ import { WarehouseItem } from "./types";
 import { usePublisherStore } from "@/features/publishers/store";
 import { CATEGORY_LABELS } from "@/features/orders/utils";
 import { Button } from "@/components/ui/buttons";
+import { formatLanguageLabel } from "@/lib/languages";
 
 export const CongregationWarehouse = ({
   congregationId,
@@ -55,8 +56,12 @@ export const CongregationWarehouse = ({
     };
   }, [congregationId]);
 
-  const handleReceive = async (title: string, category: string) => {
-    const itemKey = `${category}-${title}`;
+  const handleReceive = async (
+    title: string,
+    category: string,
+    language: string = "",
+  ) => {
+    const itemKey = `${category}-${title}-${language || "default"}`;
     setActiveItemKey(itemKey);
     setIsPending(true);
 
@@ -65,7 +70,7 @@ export const CongregationWarehouse = ({
 
     try {
       const [res] = await Promise.all([
-        bulkReceivePublications(congregationId, title, category),
+        bulkReceivePublications(congregationId, title, category, language),
         delay(1000),
       ]);
 
@@ -107,7 +112,7 @@ export const CongregationWarehouse = ({
         <div className="divide-y divide-gray-50 dark:divide-slate-800/60 max-h-96 overflow-y-auto pr-2 space-y-3">
           {items.map((item, idx) => {
             const displayLabel = tCategories(item.category);
-            const currentItemKey = `${item.category}-${item.title}`;
+            const currentItemKey = `${item.category}-${item.title}-${item.language || "default"}`;
             const isCurrentLoading =
               isPending && activeItemKey === currentItemKey;
 
@@ -123,6 +128,12 @@ export const CongregationWarehouse = ({
                     >
                       {displayLabel}
                     </span>
+
+                    {Boolean(item.language?.trim()) && (
+                      <span className="px-1.5 py-0.5 text-[10px] font-bold bg-indigo-50 text-indigo-600 rounded border border-indigo-100 dark:bg-indigo-950/50 dark:border-indigo-900/50 dark:text-indigo-400">
+                        {formatLanguageLabel(item.language)}
+                      </span>
+                    )}
                     <span
                       className={`text-[11px] px-1.5 py-0.5 rounded font-semibold transition-colors ${
                         item.status === "ORDERED"
@@ -152,7 +163,9 @@ export const CongregationWarehouse = ({
                     size="none"
                     isLoading={isCurrentLoading}
                     disabled={isPending && !isCurrentLoading}
-                    onClick={() => handleReceive(item.title, item.category)}
+                    onClick={() =>
+                      handleReceive(item.title, item.category, item.language)
+                    }
                     className="w-31.25 h-8 text-xs font-semibold rounded-xl whitespace-nowrap"
                   >
                     {`${t("receiveBtn")} (${item.quantity})`}
