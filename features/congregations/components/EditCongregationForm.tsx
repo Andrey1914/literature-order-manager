@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { EditCongregationFormProps } from "./types";
 import { Button } from "@/components/ui/buttons";
 import { useCongregationStore } from "../store";
-import { updateCongregationAction } from "../actions";
+import { updateCongregation } from "../actions";
 
 export const EditCongregationForm = ({
   item,
@@ -15,7 +15,7 @@ export const EditCongregationForm = ({
   const tCommon = useTranslations("Common");
   const tForm = useTranslations("CommonForm");
 
-  const updateCongregation = useCongregationStore(
+  const updateCongregationAction = useCongregationStore(
     (state) => state.updateCongregation,
   );
 
@@ -27,8 +27,8 @@ export const EditCongregationForm = ({
     e.preventDefault();
     try {
       setIsLoading(true);
-      const updated = await updateCongregationAction(item.id, name, country);
-      updateCongregation(updated);
+      const updated = await updateCongregation(item.id, name, country);
+      updateCongregationAction(updated);
       onSuccess();
     } catch (error) {
       console.error(t("errorLog"), error);

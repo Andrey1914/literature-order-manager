@@ -6,8 +6,8 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/config";
 import { useRouter } from "next/navigation";
 import { UserRowCardProps } from "@/types";
-import { restoreUserProfile } from "@/features/admin/actions";
-import { STATUS_CONFIG } from "@/features/admin/utils";
+import { restoreUserProfile } from "../actions";
+import { STATUS_CONFIG } from "../utils";
 
 export const UserRowCard = ({ user }: UserRowCardProps) => {
   const t = useTranslations("AdminUserDetail");
@@ -82,16 +82,13 @@ export const UserRowCard = ({ user }: UserRowCardProps) => {
         </div>
 
         <div className="flex flex-col items-center sm:flex-row sm:items-center gap-3 shrink-0 w-full sm:w-auto mt-3 sm:mt-0">
-          {/* Группа бейджей: на мобильных переносятся на новую строку при нехватке места и центрируются */}
           <div className="flex flex-wrap items-center justify-center sm:justify-end gap-2 w-full sm:w-auto">
-            {/* Бейдж Роли */}
             <span className="text-[10px] font-bold px-2.5 py-1 rounded-full border tracking-wide uppercase bg-amber-50 text-amber-700 border-amber-200 shadow-xs dark:bg-amber-500/10 dark:text-amber-400 dark:border-amber-500/20 whitespace-nowrap">
               {user.role === "superadmin"
                 ? t("roleSuperadmin")
                 : t("roleLiterature")}
             </span>
 
-            {/* Бейдж Статуса */}
             <span
               className={`text-[10px] font-bold px-2.5 py-1 rounded-full border tracking-wide uppercase transition-all whitespace-nowrap ${currentStatus.className} ${pulseClass}`}
             >
@@ -99,7 +96,6 @@ export const UserRowCard = ({ user }: UserRowCardProps) => {
             </span>
           </div>
 
-          {/* Кнопка Восстановления: на мобильных строго снизу по центру */}
           {isPending && (
             <div className="w-full sm:w-auto flex justify-center sm:block">
               <button

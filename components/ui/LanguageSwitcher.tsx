@@ -2,7 +2,6 @@
 
 import { useLocale } from "next-intl";
 import { useState, useRef, useEffect } from "react";
-// import { Link } from "@/i18n/config";
 import {
   locales,
   localeNames,
@@ -62,15 +61,18 @@ export const LanguageSwitcher = () => {
           {locales.map((loc) => {
             const Flag = flagIcons[loc];
 
+            const activeClass =
+              "bg-indigo-50 text-indigo-700 font-semibold dark:bg-indigo-500/10 dark:text-indigo-400";
+            const inactiveClass =
+              "text-gray-700 hover:bg-gray-50 dark:text-slate-300 dark:hover:bg-slate-800";
+
             return (
               <button
                 key={loc}
                 type="button"
                 onClick={() => handleLanguageChange(loc)}
                 className={`w-full flex items-center gap-2 px-3 py-1.5 text-xs text-left transition-colors ${
-                  currentLocale === loc
-                    ? "bg-indigo-50 text-indigo-700 font-semibold dark:bg-indigo-500/10 dark:text-indigo-400"
-                    : "text-gray-700 hover:bg-gray-50 dark:text-slate-300 dark:hover:bg-slate-800"
+                  currentLocale === loc ? activeClass : inactiveClass
                 }`}
               >
                 <Flag className="w-4 h-3 object-cover rounded-sm shrink-0" />
