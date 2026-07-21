@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { useCongregationStore } from "../store";
-import { createCongregationAction } from "../actions";
+import { createCongregation } from "../actions";
 import { Button } from "@/components/ui/buttons";
 import { CreateCongregationFormProps } from "./types";
 
@@ -27,7 +27,7 @@ export const CreateCongregationForm = ({
 
     try {
       setIsLoading(true);
-      const newCongregation = await createCongregationAction(name, country);
+      const newCongregation = await createCongregation(name, country);
       addCongregation(newCongregation);
 
       setName("");

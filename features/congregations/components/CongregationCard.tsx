@@ -7,7 +7,7 @@ import { Modal, ConfirmModal } from "@/components/ui/modals";
 import { CardActions } from "@/components/ui/buttons";
 import { EditCongregationForm } from "./EditCongregationForm";
 import { useCongregationStore } from "../store";
-import { deleteCongregationAction } from "../actions";
+import { deleteCongregation } from "../actions";
 
 export const CongregationCard = ({
   item,
@@ -16,7 +16,7 @@ export const CongregationCard = ({
 }: CongregationCardProps) => {
   const t = useTranslations("CongregationCard");
 
-  const deleteCongregation = useCongregationStore(
+  const deleteCongregationAction = useCongregationStore(
     (state) => state.deleteCongregation,
   );
 
@@ -27,8 +27,8 @@ export const CongregationCard = ({
   const handleDelete = async () => {
     try {
       setIsLoading(true);
-      await deleteCongregationAction(item.id);
-      deleteCongregation(item.id);
+      await deleteCongregation(item.id);
+      deleteCongregationAction(item.id);
       setIsDeleteOpen(false);
     } catch (error) {
       console.error(t("errors.deleteLog"), error);
