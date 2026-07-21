@@ -30,6 +30,7 @@ export async function getSpecialOrders(publisherId: string) {
           category: o.category,
           title: o.title,
           quantity: o.quantity,
+          language: o.language || "",
           status: o.status,
           deliveryHistory: history,
         };
@@ -59,6 +60,7 @@ export async function getRegularSubscriptions(publisherId: string) {
         category: s.category,
         title: s.title,
         quantity: s.quantity,
+        language: s.language || "",
         status: s.status,
         isActive: s.isActive,
         deliveryHistory: s.deliveryHistory

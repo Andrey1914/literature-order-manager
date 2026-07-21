@@ -74,6 +74,7 @@ export async function bulkReceivePublications(
   congregationId: string,
   title: string,
   category: string,
+  language: string,
 ) {
   try {
     const db = await getDb();
@@ -94,6 +95,7 @@ export async function bulkReceivePublications(
         publisherId: { $in: publisherIds },
         title: title,
         category: category,
+        language: language,
         status: "ORDERED",
       },
       { $set: { status: "EXPECTED", updatedAt: new Date() } },

@@ -7,3 +7,4 @@ export { UserProfile } from "./UserProfile";
 export { Spinner } from "./Spinner";
 export { ThemeProvider } from "./ThemeProvider";
 export { LoginRestoreFlow } from "./LoginRestoreFlow";
+export { LanguageSelect } from "./LanguageSelect";

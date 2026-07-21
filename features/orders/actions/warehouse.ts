@@ -44,6 +44,7 @@ export async function getCongregationWarehouse(congregationId: string) {
       {
         title: string;
         category: string;
+        language: string;
         status: "ORDERED" | "EXPECTED";
         quantity: number;
         type: "SPECIAL" | "REGULAR";
@@ -51,6 +52,7 @@ export async function getCongregationWarehouse(congregationId: string) {
     > = {};
 
     const addToMap = (item: DbOrderItem, type: "SPECIAL" | "REGULAR") => {
+      const itemLang = item.language || "";
       const key = `${item.title}_${item.category}_${item.status}`;
       if (warehouseMap[key]) {
         warehouseMap[key].quantity += item.quantity;
@@ -58,6 +60,7 @@ export async function getCongregationWarehouse(congregationId: string) {
         warehouseMap[key] = {
           title: item.title,
           category: item.category,
+          language: itemLang,
           status: item.status,
           quantity: item.quantity,
           type,
