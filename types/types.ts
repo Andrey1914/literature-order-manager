@@ -38,5 +38,7 @@ export interface Publisher {
 }
 
 export interface BaseFormProps {
+  isOpen?: boolean;
+  onClose?: () => void;
   onSuccess: () => void;
 }

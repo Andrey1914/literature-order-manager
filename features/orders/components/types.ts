@@ -1,4 +1,4 @@
-import type { BaseFormProps } from "@/types";
+import type { BaseFormProps, Publisher } from "@/types";
 import type { SpecialOrder, RegularSubscription } from "../types";
 
 export type { RegularSubscription, SpecialOrder };
@@ -32,6 +32,9 @@ export interface OrderHistoryProps {
 
 export interface CreateOrderFormProps extends BaseFormProps {
   publisherId: string;
+  publisher?: Publisher;
+  isOpen: boolean;
+  onClose: () => void;
 }
 
 export interface EditOrderModalProps {

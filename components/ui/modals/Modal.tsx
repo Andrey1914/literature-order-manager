@@ -1,7 +1,18 @@
+import { useEffect } from "react";
 import { ModalProps } from "../types";
 import { CloseIcon } from "@/components/ui/icons";
 
 export const Modal = ({ isOpen, onClose, title, children }: ModalProps) => {
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    }
+
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   return (
@@ -13,11 +24,12 @@ export const Modal = ({ isOpen, onClose, title, children }: ModalProps) => {
           onClose();
         }}
       />
+
       <div
         onClick={(e) => e.stopPropagation()}
-        className="relative w-full max-w-md rounded-2xl bg-white p-6 shadow-xl border border-gray-100 dark:bg-slate-900 dark:border-slate-800 z-10 animate-fade-in"
+        className="relative flex flex-col w-full max-w-md max-h-[85vh] sm:max-h-[90vh] rounded-2xl bg-white shadow-xl border border-gray-100 dark:bg-slate-900 dark:border-slate-800 z-10 animate-fade-in overflow-hidden"
       >
-        <div className="flex items-center justify-between border-b border-gray-100 dark:border-slate-800 pb-4 mb-4">
+        <div className="flex items-center justify-between border-b border-gray-100 dark:border-slate-800 p-6 pb-4 shrink-0">
           <h3 className="text-xl font-bold text-gray-900 dark:text-white">
             {title}
           </h3>
@@ -28,7 +40,8 @@ export const Modal = ({ isOpen, onClose, title, children }: ModalProps) => {
             <CloseIcon className="h-6 w-6" />
           </button>
         </div>
-        {children}
+
+        <div className="p-6 pt-2 overflow-y-auto flex-1">{children}</div>
       </div>
     </div>
   );
