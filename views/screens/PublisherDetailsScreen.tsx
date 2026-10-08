@@ -198,6 +198,9 @@ export const PublisherDetailsScreen = () => {
       >
         <CreateOrderForm
           publisherId={currentPublisher.id}
+          publisher={currentPublisher}
+          isOpen={isOrderModalOpen}
+          onClose={() => setIsOrderModalOpen(false)}
           onSuccess={() => setIsOrderModalOpen(false)}
         />
       </Modal>

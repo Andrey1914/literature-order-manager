@@ -24,7 +24,6 @@ export const EditOrderModal = ({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (quantity < 1) return;
-    // if (quantity < 1 || !language.trim()) return;
     await onSave(quantity, language);
   };
 
@@ -57,14 +56,6 @@ export const EditOrderModal = ({
             disabled={isLoading}
             placeholder="По умолчанию"
           />
-          {/* <input
-            type="text"
-            value={language}
-            onChange={(e) => setLanguage(e.target.value)}
-            className="w-full text-sm p-2.5 bg-white border border-gray-300 text-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-slate-950 dark:border-slate-800 dark:text-white transition-colors uppercase"
-            disabled={isLoading}
-            required
-          /> */}
         </div>
 
         <div className="flex justify-end gap-3 pt-2">
